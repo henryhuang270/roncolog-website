@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RONCO 荣程国际 — 全球物流与贸易解决方案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#071526;
+  --blue:#0D3B6E;
+  --teal:#0A7E6E;
+  --gold:#C8A84B;
+  --light:#F0F5FB;
+  --white:#FFFFFF;
+  --gray:#5A6A7A;
+  --border:#D8E2EE;
+  --ocean:#0B4A6B;
+}
+html{scroll-behavior:smooth}
+body{font-family:'PingFang SC','Microsoft YaHei','Inter',Arial,sans-serif;color:#1A2A3A;line-height:1.8}
+
+/* ======= NAV ======= */
+nav{position:fixed;top:0;width:100%;z-index:1000;transition:background .3s}
+nav.scrolled{background:rgba(7,21,38,.97);backdrop-filter:blur(12px)}
+nav .inner{max-width:1280px;margin:0 auto;padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:42px;height:42px;background:var(--teal);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:20px}
+.logo-text{color:#fff}
+.logo-text small{display:block;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;transition:color .2s;letter-spacing:.5px}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--teal);color:#fff!important;padding:9px 22px;border-radius:6px;font-size:13px;transition:background .2s}
+.nav-cta:hover{background:#08876E}
+.lang-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8);padding:7px 16px;border-radius:6px;font-size:12px;cursor:pointer;transition:background .2s;display:flex;align-items:center;gap:6px}
+.lang-btn:hover{background:rgba(255,255,255,.2)}
+.lang-panel{display:none;position:absolute;top:64px;right:40px;background:#fff;border-radius:10px;padding:8px 0;min-width:160px;box-shadow:0 12px 40px rgba(0,0,0,.2)}
+.lang-panel.open{display:block}
+.lang-panel a{display:block;padding:10px 20px;color:#1A2A3A;text-decoration:none;font-size:13px;transition:background .15s}
+.lang-panel a:hover{background:var(--light)}
+.lang-panel a.active{color:var(--teal);font-weight:600}
+
+/* ======= HERO ======= */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(160deg, rgba(7,21,38,.88) 0%, rgba(11,74,107,.80) 50%, rgba(7,21,38,.90) 100%),
+  url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80') center/cover no-repeat fixed;
+  display:flex;align-items:center;position:relative;overflow:hidden
+}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,21,38,.4) 0%,rgba(11,74,107,.2) 100%)}
+.hero-inner{max-width:1280px;margin:0 auto;padding:120px 40px 80px;position:relative;z-index:1;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.9);padding:7px 18px;border-radius:50px;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px}
+.hero h1{font-size:clamp(30px,5vw,58px);color:#fff;font-weight:700;line-height:1.25;margin-bottom:20px;max-width:700px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero-desc{font-size:clamp(14px,1.6vw,17px);color:rgba(255,255,255,.78);max-width:580px;line-height:2;margin-bottom:36px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-teal{display:inline-block;background:var(--teal);color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500;transition:background .2s;letter-spacing:.5px}
+.btn-teal:hover{background:#08876E}
+.btn-outline{display:inline-block;border:1.5px solid rgba(255,255,255,.4);color:#fff;padding:13px 30px;border-radius:8px;text-decoration:none;font-size:14px;transition:border-color .2s,background .2s}
+.btn-outline:hover{border-color:rgba(255,255,255,.8);background:rgba(255,255,255,.08)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.1);border-radius:16px;overflow:hidden;margin-top:72px;max-width:700px}
+.hero-stat{background:rgba(7,21,38,.4);padding:28px 24px;text-align:center;backdrop-filter:blur(8px)}
+.hero-stat .num{font-size:36px;font-weight:700;color:#fff;display:block}
+.hero-stat .label{font-size:12px;color:rgba(255,255,255,.55);margin-top:4px;letter-spacing:.5px}
+
+/* ======= SERVICE BANNER ======= */
+.service-banner{background:var(--navy);padding:0}
+.service-banner-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.svc-item{display:flex;align-items:center;gap:14px;padding:32px 28px;border-right:1px solid rgba(255,255,255,.08);transition:background .2s}
+.svc-item:last-child{border:none}
+.svc-item:hover{background:rgba(255,255,255,.05)}
+.svc-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.svc-icon.blue{background:rgba(13,91,174,.4)}
+.svc-icon.teal{background:rgba(10,126,110,.4)}
+.svc-icon.gold{background:rgba(200,168,75,.3)}
+.svc-icon.purple{background:rgba(100,60,180,.3)}
+.svc-item h4{font-size:14px;color:#fff;font-weight:600;margin-bottom:2px}
+.svc-item p{font-size:12px;color:rgba(255,255,255,.5)}
+
+/* ======= SECTIONS ======= */
+section{padding:100px 40px}
+.container{max-width:1280px;margin:0 auto}
+.section-label{font-size:11px;letter-spacing:3px;color:var(--teal);text-transform:uppercase;margin-bottom:12px;font-weight:600}
+.section-title{font-size:clamp(22px,3vw,36px);color:var(--navy);font-weight:700;line-height:1.4;margin-bottom:16px}
+.section-sub{font-size:16px;color:var(--gray);max-width:600px;line-height:1.9}
+.section-header{margin-bottom:60px}
+.text-center{text-align:center}
+.text-center .section-sub{margin:0 auto}
+
+/* ======= ABOUT ======= */
+.about-section{background:var(--light)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img-wrap{position:relative;border-radius:20px;overflow:hidden}
+.about-img-wrap img{width:100%;height:460px;object-fit:cover;display:block}
+.about-img-badge{position:absolute;bottom:24px;left:24px;background:rgba(7,21,38,.9);border-radius:12px;padding:16px 20px;backdrop-filter:blur(10px)}
+.about-img-badge .num{font-size:28px;font-weight:700;color:var(--gold);display:block}
+.about-img-badge .txt{font-size:12px;color:rgba(255,255,255,.7)}
+.about-content{display:flex;flex-direction:column;gap:20px}
+.about-item{background:#fff;border-radius:14px;padding:24px;border-left:4px solid var(--teal);box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.about-item h4{font-size:15px;color:var(--navy);margin-bottom:6px;font-weight:600}
+.about-item p{font-size:13px;color:var(--gray);line-height:1.8}
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.tag-chip{display:inline-block;background:var(--light);color:var(--teal);font-size:11px;padding:4px 12px;border-radius:50px;font-weight:500}
+
+/* ======= LOGISTICS ======= */
+.logistics-section{background:var(--navy);position:relative;overflow:hidden}
+.logistics-section::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=1920&q=60') center/cover no-repeat;opacity:.08}
+.logistics-section .section-label{color:rgba(255,255,255,.5)}
+.logistics-section .section-title{color:#fff}
+.logistics-section .section-sub{color:rgba(255,255,255,.55)}
+.logistics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;z-index:1}
+.log-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:36px 28px;text-align:center;transition:background .3s,transform .3s,border-color .3s;cursor:default}
+.log-card:hover{background:rgba(255,255,255,.12);transform:translateY(-6px);border-color:rgba(255,255,255,.25)}
+.log-icon{width:72px;height:72px;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:32px}
+.log-icon.air{background:rgba(13,91,174,.3)}
+.log-icon.sea{background:rgba(10,126,110,.3)}
+.log-icon.rail{background:rgba(200,168,75,.25)}
+.log-icon.land{background:rgba(180,100,60,.25)}
+.log-card h3{font-size:18px;color:#fff;margin-bottom:10px;font-weight:600}
+.log-card p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.9}
+.log-card .routes{font-size:12px;color:var(--gold);margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);letter-spacing:.5px}
+.logistics-cta{text-align:center;margin-top:56px;position:relative;z-index:1}
+.logistics-cta p{color:rgba(255,255,255,.5);font-size:14px;margin-bottom:16px}
+
+/* ======= TRADE ======= */
+.trade-section{background:var(--light)}
+.trade-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.trade-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.07);transition:box-shadow .3s,transform .3s;display:flex;flex-direction:column}
+.trade-card:hover{box-shadow:0 16px 48px rgba(0,0,0,.12);transform:translateY(-4px)}
+.trade-img{height:220px;overflow:hidden;position:relative}
+.trade-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.trade-card:hover .trade-img img{transform:scale(1.05)}
+.trade-img .overlay{position:absolute;bottom:0;left:0;right:0;padding:20px}
+.trade-img .overlay h3{color:#fff;font-size:20px;font-weight:700}
+.trade-body{padding:32px;flex:1;display:flex;flex-direction:column;gap:16px}
+.trade-tag{display:inline-block;padding:5px 14px;border-radius:50px;font-size:12px;font-weight:600}
+.trade-tag.cn{background:#EEF4FC;color:#0D3B6E}
+.trade-tag.global{background:#E1F5EE;color:#0A7E6E}
+.trade-list{list-style:none;display:flex;flex-direction:column;gap:10px;flex:1}
+.trade-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--gray);line-height:1.7}
+.trade-list li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px}
+.trade-card .trade-cta{display:inline-block;background:var(--navy);color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:500;transition:background .2s;align-self:flex-start;margin-top:auto}
+.trade-card .trade-cta:hover{background:var(--blue)}
+
+/* ======= WHY US ======= */
+.why-section{background:#fff}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.why-card{background:var(--light);border-radius:18px;padding:36px 28px;text-align:center;transition:background .2s}
+.why-card:hover{background:#E4EEF8}
+.why-icon{width:64px;height:64px;border-radius:16px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:28px}
+.why-icon.blue{background:#D6E8F8}
+.why-icon.teal{background:#D0EDE8}
+.why-icon.gold{background:#F5EDD5}
+.why-card h3{font-size:16px;color:var(--navy);margin-bottom:10px;font-weight:600}
+.why-card p{font-size:13px;color:var(--gray);line-height:1.9}
+
+/* ======= CTA ======= */
+.cta-section{background:linear-gradient(135deg,var(--navy) 0%,var(--ocean) 100%);padding:100px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=40') center/cover no-repeat;opacity:.08}
+.cta-section h2{font-size:clamp(22px,3vw,36px);color:#fff;font-weight:700;margin-bottom:16px;position:relative}
+.cta-section p{color:rgba(255,255,255,.65);font-size:16px;margin-bottom:40px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.9;position:relative}
+
+/* ======= CONTACT ======= */
+.contact-section{background:var(--light)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info{background:var(--navy);border-radius:20px;padding:48px;color:#fff}
+.contact-info h3{font-size:22px;margin-bottom:8px;font-weight:700}
+.contact-info .sub{color:rgba(255,255,255,.5);font-size:13px;margin-bottom:36px}
+.contact-row{display:flex;gap:16px;align-items:flex-start;margin-bottom:24px}
+.contact-row .icon{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.contact-row .label{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:2px;text-transform:uppercase;letter-spacing:1px}
+.contact-row .value{font-size:14px;color:#fff}
+.contact-form{background:#fff;border-radius:20px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.contact-form h3{font-size:20px;color:var(--navy);margin-bottom:24px;font-weight:700}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-field{margin-bottom:16px}
+.form-field label{display:block;font-size:13px;color:var(--navy);margin-bottom:6px;font-weight:500}
+.form-field input,.form-field select,.form-field textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;color:#1A2A3A;background:#FAFCFF;transition:border-color .2s}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--teal)}
+.form-field textarea{resize:vertical;min-height:100px}
+.form-submit{display:block;width:100%;background:var(--teal);color:#fff;padding:14px;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s;font-family:inherit}
+.form-submit:hover{background:#08876E}
+
+/* ======= FOOTER ======= */
+footer{background:var(--navy);padding:60px 40px 36px;color:rgba(255,255,255,.5);font-size:13px}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand .logo{margin-bottom:16px}
+.footer-brand p{line-height:2;color:rgba(255,255,255,.4);font-size:13px;margin-top:12px}
+.footer-col h4{color:#fff;font-size:14px;margin-bottom:16px;font-weight:500}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{color:rgba(255,255,255,.45);text-decoration:none;font-size:13px;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{color:rgba(255,255,255,.3);font-size:12px}
+
+/* ======= SCROLL REVEAL ======= */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:none}
+
+/* ======= LANGUAGE ======= */
+[lang="en"] .zh-only,
+[lang="zh"] .en-only{display:none}
+[lang="en"] .zh-only{display:block!important}
+[lang="zh"] .en-only{display:block!important}
+
+/* ======= RESPONSIVE ======= */
+@media(max-width:1024px){
+  .about-grid,.trade-grid,.contact-grid,.two-cols{grid-template-columns:1fr}
+  .logistics-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .service-banner-inner{grid-template-columns:repeat(2,1fr)}
+  .service-banner-inner .svc-item:nth-child(2){border-right:none}
+}
+@media(max-width:768px){
+  section{padding:60px 20px}
+  .hero-inner{padding:100px 20px 60px}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .logistics-grid,.why-grid{grid-template-columns:1fr}
+  .service-banner-inner{grid-template-columns:1fr}
+  .service-banner-inner .svc-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+  .footer-top{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  nav .nav-links{display:none}
+  .hero-btns{flex-direction:column}
+}
+</style>
+</head>
+<body lang="zh">
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">R</div>
+      <div class="logo-text">RONCO<small>荣程国际</small></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about"><span class="zh-only">关于我们</span><span class="en-only">About</span></a></li>
+      <li><a href="#logistics"><span class="zh-only">国际物流</span><span class="en-only">Logistics</span></a></li>
+      <li><a href="#trade"><span class="zh-only">贸易产品</span><span class="en-only">Trade</span></a></li>
+      <li><a href="#why"><span class="zh-only">为什么选我们</span><span class="en-only">Why Us</span></a></li>
+      <li><a href="#contact"><span class="zh-only">联系我们</span><span class="en-only">Contact</span></a></li>
+      <li><a href="#contact" class="nav-cta"><span class="zh-only">立即咨询</span><span class="en-only">Inquire Now</span></a></li>
+    </ul>
+    <div style="position:relative">
+      <button class="lang-btn" onclick="document.getElementById('langPanel').classList.toggle('open')">
+        <span>🌐</span>
+        <span id="langLabel">中文</span>
+        <span>▾</span>
+      </button>
+      <div id="langPanel" class="lang-panel">
+        <a href="#" onclick="setLang('zh');return false" id="langZh"><span>🇨🇳</span> 中文</a>
+        <a href="#" onclick="setLang('en');return false" id="langEn"><span>🇬🇧</span> English</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span>🚢</span> Global Supply Chain &amp; Trade</div>
+    <h1><span class="zh-only">跨境物流为底盘<br><em>全球商品流通</em>为引擎</h1>
+    <h1><span class="en-only" style="display:none">Cross-Border Logistics as Foundation<br><em>Global Product Commerce</em> as Engine</h1>
+    <p class="hero-desc zh-only">荣程国际以国际物流为根基，整合空运、海运、铁路、陆运资源，同时为中国优品出海和海外精品入华提供全链路贸易服务。</p>
+    <p class="hero-desc en-only" style="display:none">RONCO International builds on cross-border logistics, integrating air, ocean, rail and trucking resources to serve both China-to-global export and global-to-China import trade.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-teal"><span class="zh-only">获取报价 / Get Quote</span><span class="en-only" style="display:none">Get a Quote</span></a>
+      <a href="#trade" class="btn-outline"><span class="zh-only">查看产品 / Our Products</span><span class="en-only" style="display:none">View Products</span></a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="num">2018</span>
+        <span class="label"><span class="zh-only">业务源起</span><span class="en-only">Origin Year</span></span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">80+</span>
+        <span class="label"><span class="zh-only">覆盖国家</span><span class="en-only">Countries</span></span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">2,000+</span>
+        <span class="label"><span class="zh-only">企业客户</span><span class="en-only">Enterprise Clients</span></span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">20+</span>
+        <span class="label"><span class="zh-only">国内网点</span><span class="en-only">Service Nodes</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE BANNER -->
+<div class="service-banner">
+  <div class="service-banner-inner">
+    <div class="svc-item">
+      <div class="svc-icon blue">✈️</div>
+      <div>
+        <h4><span class="zh-only">国际空运</span><span class="en-only">Air Freight</span></h4>
+        <p><span class="zh-only">全球主要城市 3-7 天达</span><span class="en-only">Major cities, 3-7 days</span></p>
+      </div>
+    </div>
+    <div class="svc-item">
+      <div class="svc-icon teal">🚢</div>
+      <div>
+        <h4><span class="zh-only">国际海运</span><span class="en-only">Ocean Freight</span></h4>
+        <p><span class="zh-only">整柜 / 拼箱 全覆盖</span><span class="en-only">FCL &amp; LCL available</span></p>
+      </div>
+    </div>
+    <div class="svc-item">
+      <div class="svc-icon gold">🚂</div>
+      <div>
+        <h4><span class="zh-only">中欧班列</span><span class="en-only">China-Europe Rail</span></h4>
+        <p><span class="zh-only">铁路直达欧洲主要城市</span><span class="en-only">Direct rail to Europe</span></p>
+      </div>
+    </div>
+    <div class="svc-item">
+      <div class="svc-icon purple">🚛</div>
+      <div>
+        <h4><span class="zh-only">东南亚陆运</span><span class="en-only">SEA Road Freight</span></h4>
+        <p><span class="zh-only">越南 / 泰国 / 马来西亚</span><span class="en-only">Vietnam, Thailand, Malaysia</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&q=80" alt="Global Shipping">
+        <div class="about-img-badge">
+          <span class="num">8+</span>
+          <span class="txt"><span class="zh-only">年国际物流经验</span><span class="en-only">Years of Experience</span></span>
+        </div>
+      </div>
+      <div class="about-content reveal">
+        <div>
+          <div class="section-label"><span class="zh-only">01 / 关于我们</span><span class="en-only">01 / ABOUT US</span></div>
+          <h2 class="section-title"><span class="zh-only">荣程国际供应链</span><span class="en-only">RONCO International Supply Chain</span></h2>
+          <p class="section-sub"><span class="zh-only">坐落于粤港澳大湾区核心腹地——东莞松山湖，依托盟博云物流八年运营经验，为客户提供国际物流与全球商品贸易一站式解决方案。</span><span class="en-only">Based in Songshan Lake, Dongguan — Guangdong-Hong Kong-Macao Greater Bay Area, RONCO offers one-stop international logistics and global trade solutions built on 8 years of operational expertise.</span></p>
+        </div>
+        <div class="about-item">
+          <h4><span class="zh-only">🏭 两大核心业务板块</span><span class="en-only">🏭 Two Core Business Divisions</span></h4>
+          <p><span class="zh-only">国际物流：空运·海运·铁路·陆运，覆盖欧美及东南亚<br>国际贸易：中国优品出海 + 海外精品入华</span><span class="en-only">International Logistics: Air · Ocean · Rail · Road to Europe &amp; SE Asia<br>Global Trade: China-to-Global Export + Global-to-China Import</span></p>
+        </div>
+        <div class="about-item">
+          <h4><span class="zh-only">🤝 我们的优势</span><span class="en-only">🤝 Our Advantages</span></h4>
+          <p><span class="zh-only">专业物流团队 · 合规清关能力 · 数字化OMS/TMS系统 · 一对一客服跟进</span><span class="en-only">Professional logistics team · Compliance expertise · Digital OMS/TMS · Dedicated account manager</span></p>
+          <div class="tag-row">
+            <span class="tag-chip"><span class="zh-only">物流确定性</span><span class="en-only">Logistics Certainty</span></span>
+            <span class="tag-chip"><span class="zh-only">合规先行</span><span class="en-only">Compliance First</span></span>
+            <span class="tag-chip"><span class="zh-only">数字化追踪</span><span class="en-only">Digital Tracking</span></span>
+          </div>
+        </div>
+        <div class="about-item" style="border-left-color:var(--gold)">
+          <h4><span class="zh-only">🌏 服务定位</span><span class="en-only">🌏 Service Positioning</span></h4>
+          <p><span class="zh-only">立足大湾区，链接中国制造与全球市场——帮助中国优质产品走向世界，也帮助海外精品进入中国千家万户。</span><span class="en-only">Connecting Chinese manufacturing with global markets from the Greater Bay Area — helping quality Chinese products reach the world and premium global products enter Chinese households.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGISTICS -->
+<section id="logistics" class="logistics-section">
+  <div class="container">
+    <div class="section-header reveal text-center">
+      <div class="section-label"><span class="zh-only">02 / 国际物流</span><span class="en-only">02 / INTERNATIONAL LOGISTICS</span></div>
+      <h2 class="section-title"><span class="zh-only">全球物流网络 · 通达欧美与东南亚</span><span class="en-only">Global Logistics Network · Europe &amp; SE Asia Coverage</span></h2>
+      <p class="section-sub"><span class="zh-only">依托国际空运、国际海运、中欧班列和东南亚陆运四大通道，为客户提供稳定、高效、可追踪的门到门物流解决方案。</span><span class="en-only">Through four major channels — air, ocean, rail and road — we deliver stable, efficient and trackable door-to-door logistics solutions.</span></p>
+    </div>
+    <div class="logistics-grid reveal">
+      <div class="log-card">
+        <div class="log-icon air">✈️</div>
+        <h3><span class="zh-only">国际空运</span><span class="en-only">Air Freight</span></h3>
+        <p><span class="zh-only">覆盖全球主要空港，提供普通货物与危险品运输，时效快、安全高，适合高附加值产品。</span><span class="en-only">Covering major airports worldwide. Standard &amp; DG cargo. Fast, reliable for high-value goods.</span></p>
+        <div class="routes"><span class="zh-only">主要航线 → 欧美 / 东南亚 / 澳洲</span><span class="en-only">Routes → Europe / SE Asia / Australia</span></div>
+      </div>
+      <div class="log-card">
+        <div class="log-icon sea">🚢</div>
+        <h3><span class="zh-only">国际海运</span><span class="en-only">Ocean Freight</span></h3>
+        <p><span class="zh-only">整柜（FCL）与拼箱（LCL）双模式，提供DDU/DDP目的港服务，清关+派送一站式处理。</span><span class="en-only">FCL &amp; LCL options. DDU/DDP destination services. One-stop customs &amp; delivery.</span></p>
+        <div class="routes"><span class="zh-only">主要港口 → 欧洲 / 东南亚 / 中东</span><span class="en-only">Ports → Europe / SE Asia / Middle East</span></div>
+      </div>
+      <div class="log-card">
+        <div class="log-icon rail">🚂</div>
+        <h3><span class="zh-only">中欧班列</span><span class="en-only">China-Europe Rail</span></h3>
+        <p><span class="zh-only">从西安、重庆、成都出发，直达欧洲主要城市（汉堡、杜伊斯堡、华沙），时效优于海运，成本低于空运。</span><span class="en-only">Departing Xi'an, Chongqing, Chengdu — direct to Hamburg, Duisburg, Warsaw. Faster than ocean, cheaper than air.</span></p>
+        <div class="routes"><span class="zh-only">目的地 → 德国 / 波兰 / 西班牙</span><span class="en-only">Destinations → Germany / Poland / Spain</span></div>
+      </div>
+      <div class="log-card">
+        <div class="log-icon land">🚛</div>
+        <h3><span class="zh-only">东南亚陆运</span><span class="en-only">SE Asia Road Freight</span></h3>
+        <p><span class="zh-only">中国至越南、泰国、马来西亚、柬埔寨跨境公路运输，支持散货拼车与整柜拖车，当日装货，动态追踪。</span><span class="en-only">China to Vietnam, Thailand, Malaysia, Cambodia. LTL &amp; FTL options with real-time tracking.</span></p>
+        <div class="routes"><span class="zh-only">覆盖 → 越南 / 泰国 / 马来西亚</span><span class="en-only">Coverage → Vietnam / Thailand / Malaysia</span></div>
+      </div>
+    </div>
+    <div class="logistics-cta reveal">
+      <p><span class="zh-only">需要了解具体线路报价？填写下方表单，24小时内获取专属方案。</span><span class="en-only">Need a specific route quote? Fill in the form below and receive a custom plan within 24 hours.</span></p>
+      <a href="#contact" class="btn-teal"><span class="zh-only">申请物流报价</span><span class="en-only">Request Logistics Quote</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- TRADE -->
+<section id="trade" class="trade-section">
+  <div class="container">
+    <div class="section-header reveal text-center">
+      <div class="section-label"><span class="zh-only">03 / 贸易产品</span><span class="en-only">03 / TRADE PRODUCTS</span></div>
+      <h2 class="section-title"><span class="zh-only">全球商品贸易引擎</span><span class="en-only">Global Product Commerce Engine</span></h2>
+      <p class="section-sub"><span class="zh-only">不止物流，更是商品流通解决方案——帮助中国优品走向全球，也将海外精品引入中国。</span><span class="en-only">More than logistics — we organize product commerce. Helping Chinese quality goods reach the world, and global premium products enter China.</span></p>
+    </div>
+    <div class="trade-grid reveal">
+      <div class="trade-card">
+        <div class="trade-img">
+          <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80" alt="China Export">
+          <div class="overlay">
+            <h3><span class="zh-only">中国优品 → 全球</span><span class="en-only">China → Global</span></h3>
+          </div>
+        </div>
+        <div class="trade-body">
+          <span class="trade-tag cn"><span class="zh-only">出海业务</span><span class="en-only">Export Division</span></span>
+          <ul class="trade-list">
+            <li><span class="zh-only">聚焦创新设计、品质稳定、具备海外市场潜力的中国制造产品</span><span class="en-only">Focus on innovative, quality Chinese-made products with overseas market potential</span></li>
+            <li><span class="zh-only">从选品、报价、包装设计、质检到出口交付全流程服务</span><span class="en-only">Full-service from sourcing, pricing, packaging design, QC to export delivery</span></li>
+            <li><span class="zh-only">协助建立海外渠道资料，提供多语言本地化内容支持</span><span class="en-only">Supporting overseas channel materials and multilingual localization</span></li>
+            <li><span class="zh-only">目标市场：欧美零售批发商、跨境电商卖家</span><span class="en-only">Target markets: EU/US retailers, cross-border e-commerce sellers</span></li>
+          </ul>
+          <a href="#contact" class="trade-cta"><span class="zh-only">洽谈出口合作 →</span><span class="en-only">Export Inquiry →</span></a>
+        </div>
+      </div>
+      <div class="trade-card">
+        <div class="trade-img">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80" alt="Import to China">
+          <div class="overlay">
+            <h3><span class="zh-only">全球精品 → 中国</span><span class="en-only">Global → China</span></h3>
+          </div>
+        </div>
+        <div class="trade-body">
+          <span class="trade-tag global"><span class="zh-only">进口业务</span><span class="en-only">Import Division</span></span>
+          <ul class="trade-list">
+            <li><span class="zh-only">精选欧洲（德国为重心）优质消费品：母婴保健品、中老年营养品、高端护肤品</span><span class="en-only">Curated European premium goods: mother &amp; baby health, elderly nutrition, premium skincare</span></li>
+            <li><span class="zh-only">提供中文标签注册、进口检测、CFDA备案、清关一站式合规服务</span><span class="en-only">One-stop Chinese label registration, import testing, customs clearance</span></li>
+            <li><span class="zh-only">对接天猫国际、京东全球购、抖音跨境等主流平台渠道</span><span class="en-only">Channel access: Tmall Global, JD Worldwide, Douyin Cross-border</span></li>
+            <li><span class="zh-only">支持B端批发与C端零售双模式，可提供品牌独家代理咨询</span><span class="en-only">B2B wholesale &amp; B2C retail, exclusive distribution inquiries welcome</span></li>
+          </ul>
+          <a href="#contact" class="trade-cta"><span class="zh-only">洽谈进口合作 →</span><span class="en-only">Import Inquiry →</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product categories -->
+    <div class="section-header reveal text-center" style="margin-top:80px">
+      <h2 class="section-title"><span class="zh-only">精选品类 / Featured Categories</span><span class="en-only">Featured Categories</span></h2>
+    </div>
+    <div class="why-grid reveal" style="margin-top:0">
+      <div class="why-card">
+        <div class="why-icon blue">🍼</div>
+        <h3><span class="zh-only">母婴保健品</span><span class="en-only">Mother &amp; Baby Health</span></h3>
+        <p><span class="zh-only">德国/欧洲儿童营养补充剂、维生素D3、益生菌等，专注安全配方与天然成分</span><span class="en-only">German/European children's supplements, Vitamin D3, probiotics — safety-focused natural formulas</span></p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon teal">💊</div>
+        <h3><span class="zh-only">中老年营养品</span><span class="en-only">Elderly Nutrition</span></h3>
+        <p><span class="zh-only">鱼油、辅酶Q10、氨基葡萄糖等，针对心脑血管、骨关节健康的高品质产品</span><span class="en-only">Fish oil, CoQ10, glucosamine — high-quality products for cardiovascular and joint health</span></p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon gold">💄</div>
+        <h3><span class="zh-only">高端化妆品</span><span class="en-only">Premium Skincare</span></h3>
+        <p><span class="zh-only">欧洲天然护肤品牌代理，包含抗衰老、敏感肌、功能性护肤等细分品类</span><span class="en-only">European natural skincare brand agency — anti-aging, sensitive skin, functional skincare</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="why-section">
+  <div class="container">
+    <div class="section-header reveal text-center">
+      <div class="section-label"><span class="zh-only">04 / 为什么选择荣程</span><span class="en-only">04 / WHY RONCO</span></div>
+      <h2 class="section-title"><span class="zh-only">我们不只是物流，更是您的全球商品流通伙伴</span><span class="en-only">More Than Logistics — Your Global Commerce Partner</span></h2>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-icon blue">📦</div>
+        <h3><span class="zh-only">物流 + 贸易 双能力</span><span class="en-only">Logistics + Trade, Dual Capability</span></h3>
+        <p><span class="zh-only">国际物流为底盘，同时具备商品选品、合规咨询和渠道分销能力，真正实现从"运货"到"卖货"的延伸。</span><span class="en-only">Built on cross-border logistics with product sourcing, compliance and distribution — from shipping to selling.</span></p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon teal">✅</div>
+        <h3><span class="zh-only">合规先行</span><span class="en-only">Compliance-First Approach</span></h3>
+        <p><span class="zh-only">进口食品、化妆品均有专业合规团队跟进——CFDA备案、中文标签、检测报告，确保产品顺利进入中国市场。</span><span class="en-only">Professional compliance team handles CFDA filings, Chinese labels and testing — ensuring smooth China market entry.</span></p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon gold">💻</div>
+        <h3><span class="zh-only">数字化追踪系统</span><span class="en-only">Digital Tracking System</span></h3>
+        <p><span class="zh-only">OMS订单管理 + TMS运输追踪 + WMS仓储管理，实时可视化货物状态，客户随时随地掌握物流动态。</span><span class="en-only">OMS + TMS + WMS digital systems — real-time cargo visibility, clients track shipments anytime.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="reveal"><span class="zh-only">开启您的全球贸易之旅</span><span class="en-only">Start Your Global Commerce Journey</span></h2>
+  <p class="reveal"><span class="zh-only">无论您想将产品出口海外，还是希望将欧洲精品引入中国，荣程国际都是您值得信赖的伙伴。</span><span class="en-only">Whether exporting Chinese products or importing European premium goods to China, RONCO is your trusted partner.</span></p>
+  <div class="reveal">
+    <a href="#contact" class="btn-teal" style="font-size:15px;padding:16px 40px"><span class="zh-only">立即咨询合作</span><span class="en-only">Contact Us Now</span></a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label"><span class="zh-only">05 / 联系我们</span><span class="en-only">05 / CONTACT US</span></div>
+      <h2 class="section-title"><span class="zh-only">期待与您合作</span><span class="en-only">Let's Work Together</span></h2>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <h3>RONCO 荣程国际</h3>
+        <p class="sub"><span class="zh-only">荣程国际供应链科技（东莞）有限公司</span><span class="en-only">RONCO International Supply Chain Technology (Dongguan) Co., Ltd.</span></p>
+        <div class="contact-row">
+          <div class="icon">🏢</div>
+          <div>
+            <div class="label"><span class="zh-only">地址</span><span class="en-only">Address</span></div>
+            <div class="value"><span class="zh-only">广东省东莞市松山湖高新技术产业开发区</span><span class="en-only">Songshan Lake, Dongguan, Guangdong, China</span></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="icon">🌐</div>
+          <div>
+            <div class="label"><span class="zh-only">网站</span><span class="en-only">Website</span></div>
+            <div class="value">www.roncolog.com</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="icon">✉️</div>
+          <div>
+            <div class="label"><span class="zh-only">邮箱</span><span class="en-only">Email</span></div>
+            <div class="value">info@roncolog.com</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="icon">💬</div>
+          <div>
+            <div class="label"><span class="zh-only">微信</span><span class="en-only">WeChat</span></div>
+            <div class="value"><span class="zh-only">欢迎扫码或添加好友咨询合作</span><span class="en-only">Add us for business inquiries</span></div>
+          </div>
+        </div>
+        <div style="margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1)">
+          <p style="font-size:12px;color:rgba(255,255,255,.4);line-height:1.9"><span class="zh-only">📌 可受理业务：国际物流报价咨询 / 德国/欧洲保健品·化妆品进口合作 / 中国优品出口海外 / 供应链定制方案</span><span class="en-only">📌 Services: International logistics quotes / German/European health &amp; skincare import / China export / Custom supply chain solutions</span></p>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3><span class="zh-only">快速询价 / 在线咨询</span><span class="en-only">Quick Quote / Inquiry</span></h3>
+        <div class="form-row">
+          <div class="form-field">
+            <label><span class="zh-only">您的姓名</span><span class="en-only">Your Name</span></label>
+            <input type="text" placeholder="张三 / John">
+          </div>
+          <div class="form-field">
+            <label><span class="zh-only">公司名称</span><span class="en-only">Company Name</span></label>
+            <input type="text" placeholder="公司名 / Company">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label><span class="zh-only">邮箱</span><span class="en-only">Email</span></label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-field">
+            <label><span class="zh-only">咨询类型</span><span class="en-only">Inquiry Type</span></label>
+            <select>
+              <option value="">— <span class="zh-only">请选择</span><span class="en-only">Select</span> —</option>
+              <option value="air"><span class="zh-only">国际空运</span><span class="en-only">Air Freight</span></option>
+              <option value="sea"><span class="zh-only">国际海运</span><span class="en-only">Ocean Freight</span></option>
+              <option value="rail"><span class="zh-only">中欧班列</span><span class="en-only">China-Europe Rail</span></option>
+              <option value="road"><span class="zh-only">东南亚陆运</span><span class="en-only">SE Asia Road</span></option>
+              <option value="import"><span class="zh-only">进口合作（欧洲产品入华）</span><span class="en-only">Import (Europe to China)</span></option>
+              <option value="export"><span class="zh-only">出口合作（中国产品出海）</span><span class="en-only">Export (China to Global)</span></option>
+              <option value="other"><span class="zh-only">其他</span><span class="en-only">Other</span></option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label><span class="zh-only">您的需求描述</span><span class="en-only">Describe Your Needs</span></label>
+          <textarea placeholder="请简要描述您的物流或贸易需求 / Briefly describe your logistics or trade needs"></textarea>
+        </div>
+        <button type="submit" class="form-submit" onclick="alert('已提交！我们的客服会在24小时内与您联系。/ Submitted! We will respond within 24 hours.')">
+          <span class="zh-only">提交咨询 / Submit Inquiry</span>
+          <span class="en-only" style="display:none">Submit Inquiry</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="margin-bottom:4px">
+          <div class="logo-icon" style="width:36px;height:36px;font-size:16px">R</div>
+          <div class="logo-text">RONCO</div>
+        </a>
+        <p><span class="zh-only">荣程国际供应链科技（东莞）有限公司</span><span class="en-only">RONCO International Supply Chain Technology (Dongguan) Co., Ltd.</span><br><span class="zh-only">国际物流 · 全球贸易 · 供应链解决方案</span><span class="en-only">International Logistics · Global Trade · Supply Chain Solutions</span></p>
+      </div>
+      <div class="footer-col">
+        <h4><span class="zh-only">物流服务</span><span class="en-only">Logistics</span></h4>
+        <ul>
+          <li><a href="#logistics"><span class="zh-only">国际空运</span><span class="en-only">Air Freight</span></a></li>
+          <li><a href="#logistics"><span class="zh-only">国际海运</span><span class="en-only">Ocean Freight</span></a></li>
+          <li><a href="#logistics"><span class="zh-only">中欧班列</span><span class="en-only">China-Europe Rail</span></a></li>
+          <li><a href="#logistics"><span class="zh-only">东南亚陆运</span><span class="en-only">SE Asia Road</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><span class="zh-only">贸易板块</span><span class="en-only">Trade</span></h4>
+        <ul>
+          <li><a href="#trade"><span class="zh-only">中国优品出海</span><span class="en-only">China → Global</span></a></li>
+          <li><a href="#trade"><span class="zh-only">海外精品入华</span><span class="en-only">Global → China</span></a></li>
+          <li><a href="#trade"><span class="zh-only">母婴保健品</span><span class="en-only">Mother &amp; Baby Health</span></a></li>
+          <li><a href="#trade"><span class="zh-only">中老年营养品</span><span class="en-only">Elderly Nutrition</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><span class="zh-only">联系我们</span><span class="en-only">Contact</span></h4>
+        <ul>
+          <li><a href="#">www.roncolog.com</a></li>
+          <li><a href="mailto:info@roncolog.com">info@roncolog.com</a></li>
+          <li><a href="#"><span class="zh-only">东莞市松山湖</span><span class="en-only">Songshan Lake, DG</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 RONCO International Supply Chain Technology (Dongguan) Co., Ltd. All rights reserved.</p>
+      <p><span class="zh-only">科技驱动 · 链接全球 · 赋能贸易</span><span class="en-only">Technology-Driven · Globally Connected · Trade-Enabling</span></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Language switcher
+function setLang(lang) {
+  document.body.lang = lang;
+  document.getElementById('langPanel').classList.remove('open');
+  document.getElementById('langLabel').textContent = lang === 'zh' ? '中文' : 'EN';
+  document.getElementById('langZh').classList.toggle('active', lang === 'zh');
+  document.getElementById('langEn').classList.toggle('active', lang === 'en');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav background on scroll
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Close lang panel
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.lang-btn') && !e.target.closest('#langPanel')) {
+    document.getElementById('langPanel').classList.remove('open');
+  }
+});
+</script>
+
+</body>
+</html>
