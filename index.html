@@ -166,11 +166,7 @@
 </section>
 
 <section id="contact" class="contact">
-  <div class="container"><div class="section-head"><div class="kicker">Contact</div><h2 class="title zh">联系我们</h2><h2 class="title en">Contact RONCO</h2><p class="sub zh">欢迎物流客户、海外品牌方、中国制造企业和跨境电商团队联系合作。</p><p class="sub en">We welcome logistics customers, overseas brands, Chinese manufacturers and cross-border e-commerce teams.</p></div><div class="contact-wrap"><div class="contact-box"><h3>RONCO International Supply Chain Technology (Dongguan) Co., Ltd.</h3><div class="contact-row">📍 <span class="zh">广东省东莞市松山湖高新区创意设计城2栋2单元503室</span><span class="en">Unit 503, Building 2, International Creative Design City, Songshan Lake, Dongguan, Guangdong, China</span></div><div class="contact-row">🌐 www.roncolog.com</div><div class="contact-row">✉️ info@roncolog.com</div><div class="contact-row">💼 <span class="zh">国际物流 · 国际贸易 · 供应链解决方案</span><span class="en">International Logistics · Global Trade · Supply Chain Solutions</span></div></div><form class="contact-box form" id="contactForm" action="https://formsubmit.co/info@roncolog.com" method="POST">
-<input type="hidden" name="_subject" value="RONCO Website Inquiry / 官网客户咨询">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_next" value="https://www.roncolog.com/#contact">
+  <div class="container"><div class="section-head"><div class="kicker">Contact</div><h2 class="title zh">联系我们</h2><h2 class="title en">Contact RONCO</h2><p class="sub zh">欢迎物流客户、海外品牌方、中国制造企业和跨境电商团队联系合作。</p><p class="sub en">We welcome logistics customers, overseas brands, Chinese manufacturers and cross-border e-commerce teams.</p></div><div class="contact-wrap"><div class="contact-box"><h3>RONCO International Supply Chain Technology (Dongguan) Co., Ltd.</h3><div class="contact-row">📍 <span class="zh">广东省东莞市松山湖高新区创意设计城2栋2单元503室</span><span class="en">Unit 503, Building 2, International Creative Design City, Songshan Lake, Dongguan, Guangdong, China</span></div><div class="contact-row">🌐 www.roncolog.com</div><div class="contact-row">✉️ info@roncolog.com</div><div class="contact-row">💼 <span class="zh">国际物流 · 国际贸易 · 供应链解决方案</span><span class="en">International Logistics · Global Trade · Supply Chain Solutions</span></div></div><form class="contact-box form" id="contactForm">
 <input type="text" name="Name / 姓名" id="inquiryName" placeholder="Name / 姓名" required>
 <input type="text" name="Company / 公司" id="inquiryCompany" placeholder="Company / 公司">
 <input type="email" name="email" id="inquiryEmail" placeholder="Email / 邮箱" required>
@@ -206,6 +202,10 @@ const contactForm = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
 const formStatus = document.getElementById('formStatus');
 
+// Formspree endpoint: replace YOUR_FORM_ID with the form ID generated in your Formspree account.
+// Example: https://formspree.io/f/abcdwxyz
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
 function setFormStatus(type, message){
   if(!formStatus) return;
   formStatus.className = 'form-status' + (type ? ' ' + type : '');
@@ -213,22 +213,60 @@ function setFormStatus(type, message){
 }
 
 if(contactForm){
-  contactForm.addEventListener('submit', function(event){
+  contactForm.addEventListener('submit', async function(event){
+    event.preventDefault();
+
     const name = document.getElementById('inquiryName')?.value.trim() || '';
+    const company = document.getElementById('inquiryCompany')?.value.trim() || '';
     const email = document.getElementById('inquiryEmail')?.value.trim() || '';
+    const inquiryType = document.getElementById('inquiryType')?.value || '';
     const message = document.getElementById('inquiryMessage')?.value.trim() || '';
 
     if(!name || !email || !message){
-      event.preventDefault();
       setFormStatus('error', 'Please complete name, email and message. / 请填写姓名、邮箱和留言内容。');
+      return;
+    }
+
+    if(FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')){
+      setFormStatus('error', 'Please replace YOUR_FORM_ID with your Formspree form endpoint first. / 请先把 YOUR_FORM_ID 替换成 Formspree 后台生成的表单地址。');
       return;
     }
 
     setFormStatus('', 'Submitting... / 正在提交，请稍候...');
     if(submitBtn) submitBtn.disabled = true;
+
+    try{
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          subject: 'RONCO Website Inquiry / 官网客户咨询',
+          name: name,
+          company: company,
+          email: email,
+          inquiry_type: inquiryType,
+          message: message,
+          website: 'www.roncolog.com',
+          receiver: 'info@roncolog.com'
+        })
+      });
+
+      if(response.ok){
+        setFormStatus('success', 'Thank you. Your inquiry has been submitted. / 谢谢，您的咨询已提交，我们会尽快与您联系。');
+        contactForm.reset();
+      }else{
+        setFormStatus('error', 'Submission failed. Please try again or contact info@roncolog.com. / 提交失败，请稍后再试，或直接联系 info@roncolog.com。');
+      }
+    }catch(error){
+      setFormStatus('error', 'Network error. Please refresh and try again, or contact info@roncolog.com. / 网络异常，请刷新后再试，或直接联系 info@roncolog.com。');
+    }finally{
+      if(submitBtn) submitBtn.disabled = false;
+    }
   });
 }
-
 </script>
 </body>
 </html>
