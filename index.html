@@ -202,10 +202,6 @@ const contactForm = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
 const formStatus = document.getElementById('formStatus');
 
-// Formspree endpoint: replace YOUR_FORM_ID with the form ID generated in your Formspree account.
-// Example: https://formspree.io/f/abcdwxyz
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
-
 function setFormStatus(type, message){
   if(!formStatus) return;
   formStatus.className = 'form-status' + (type ? ' ' + type : '');
@@ -227,38 +223,45 @@ if(contactForm){
       return;
     }
 
-    if(FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')){
-      setFormStatus('error', 'Please replace YOUR_FORM_ID with your Formspree form endpoint first. / 请先把 YOUR_FORM_ID 替换成 Formspree 后台生成的表单地址。');
-      return;
-    }
-
     setFormStatus('', 'Submitting... / 正在提交，请稍候...');
     if(submitBtn) submitBtn.disabled = true;
 
     try{
-      const response = await fetch(FORMSPREE_ENDPOINT, {
+      const response = await fetch('https://formsubmit.co/ajax/info@roncolog.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          subject: 'RONCO Website Inquiry / 官网客户咨询',
+          _subject: 'RONCO Website Inquiry / 官网客户咨询',
+          _template: 'table',
+          _captcha: 'false',
           name: name,
           company: company,
           email: email,
           inquiry_type: inquiryType,
           message: message,
           website: 'www.roncolog.com',
-          receiver: 'info@roncolog.com'
+          form_receiver_note: 'Website public contact remains info@roncolog.com; FormSubmit receiver is info@roncolog.com'
         })
       });
 
-      if(response.ok){
+      let result = {};
+      try{
+        result = await response.json();
+      }catch(e){}
+
+      if(response.ok && String(result.success) !== 'false'){
         setFormStatus('success', 'Thank you. Your inquiry has been submitted. / 谢谢，您的咨询已提交，我们会尽快与您联系。');
         contactForm.reset();
       }else{
-        setFormStatus('error', 'Submission failed. Please try again or contact info@roncolog.com. / 提交失败，请稍后再试，或直接联系 info@roncolog.com。');
+        const serverMessage = (result.message || result.error || '').toString();
+        if(serverMessage.toLowerCase().includes('activate') || serverMessage.toLowerCase().includes('activation')){
+          setFormStatus('error', 'The form needs one-time activation. Please open info@roncolog.com and click the FormSubmit activation link, then test again. / 表单需要先激活一次，请打开 info@roncolog.com 邮箱点击 FormSubmit 激活链接，然后再测试。');
+        }else{
+          setFormStatus('error', 'Submission failed. Please try again or contact info@roncolog.com. / 提交失败，请稍后再试，或直接联系 info@roncolog.com。');
+        }
       }
     }catch(error){
       setFormStatus('error', 'Network error. Please refresh and try again, or contact info@roncolog.com. / 网络异常，请刷新后再试，或直接联系 info@roncolog.com。');
