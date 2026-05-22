@@ -118,6 +118,34 @@
   color:#ffd3d3;
 }
 
+
+
+/* ===== News & Insights section added for RONCO website ===== */
+.news{background:#fff;position:relative;overflow:hidden}
+.news:before{content:"";position:absolute;top:-160px;right:-160px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(10,143,134,.12),rgba(10,143,134,0) 70%);pointer-events:none}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+.news-card{overflow:hidden;padding:0;position:relative}
+.news-card img{width:100%;height:220px;object-fit:cover;display:block;background:#eaf0f6}
+.news-body{padding:28px}
+.news-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;color:var(--muted);font-size:12px;font-weight:800;letter-spacing:.4px;text-transform:uppercase}
+.news-pill{display:inline-flex;align-items:center;padding:5px 11px;border-radius:999px;background:#e8f4f3;color:var(--teal);font-size:12px;font-weight:900}
+.news-card h3{font-size:21px;line-height:1.35;color:var(--navy);margin-bottom:12px}
+.news-card p{color:var(--muted);font-size:15px}
+.news-read{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}
+.news-read summary{cursor:pointer;color:var(--blue);font-weight:900;list-style:none;display:inline-flex;align-items:center;gap:8px}
+.news-read summary::-webkit-details-marker{display:none}
+.news-read summary:after{content:"＋";font-size:17px;color:var(--teal)}
+.news-read[open] summary:after{content:"－"}
+.news-article-body{margin-top:18px;color:var(--ink);font-size:15px;line-height:1.85}
+.news-article-body p{margin-bottom:13px;color:var(--ink)}
+.news-article-body ul{margin:12px 0 14px 18px;color:var(--ink)}
+.news-article-body li{margin-bottom:8px;color:var(--ink)}
+.news-source{margin-top:14px;padding:12px 14px;border-radius:14px;background:#f3f7fb;color:var(--muted);font-size:13px;line-height:1.6}
+.news-source a{color:var(--blue);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.news-note{margin-top:28px;padding:18px 22px;border:1px solid var(--line);border-radius:18px;background:#f8fbfe;color:var(--muted);font-size:14px;line-height:1.8}
+@media(max-width:980px){.news-grid{grid-template-columns:1fr 1fr}.links{gap:20px}}
+@media(max-width:620px){.news-grid{grid-template-columns:1fr}.news-card img{height:200px}.news-body{padding:24px}}
+
 </style>
 </head>
 <body>
@@ -130,6 +158,7 @@
       <li><a href="#vision"><span class="zh">愿景使命</span><span class="en">Vision</span></a></li>
       <li><a href="#logistics"><span class="zh">国际物流</span><span class="en">Logistics</span></a></li>
       <li><a href="#trade"><span class="zh">国际贸易</span><span class="en">Trade</span></a></li>
+      <li><a href="#news"><span class="zh">新闻动态</span><span class="en">News</span></a></li>
       <li><a href="#contact"><span class="zh">联系我们</span><span class="en">Contact</span></a></li>
     </ul>
     <div class="right-tools"><button class="lang" onclick="toggleLang()"><span id="langText">EN</span></button><a class="cta" href="#contact"><span class="zh">立即咨询</span><span class="en">Inquire</span></a></div>
@@ -166,8 +195,116 @@
   <div class="container"><div class="section-head"><div class="kicker">Why Choose Us</div><h2 class="title zh">更适合国际客户理解的合作优势</h2><h2 class="title en">Internationally Understandable Cooperation Advantages</h2></div><div class="adv-grid"><div class="card adv-card"><h3 class="zh">物流与贸易一体</h3><h3 class="en">Logistics + Trade</h3><p class="zh">我们既能组织运输，也理解商品、渠道、价格和合规，不只是“搬货”。</p><p class="en">We understand not only shipping, but also products, channels, pricing and compliance.</p></div><div class="card adv-card"><h3 class="zh">面向真实渠道</h3><h3 class="en">Market-Oriented</h3><p class="zh">对接跨境电商、批发分销、私域试销等渠道，帮助品牌验证中国市场。</p><p class="en">We connect brands with cross-border e-commerce, wholesale distribution and pilot sales channels.</p></div><div class="card adv-card"><h3 class="zh">双语沟通</h3><h3 class="en">Bilingual Communication</h3><p class="zh">网站、资料、询盘、产品介绍均可中英文呈现，降低海外合作沟通成本。</p><p class="en">Bilingual websites, profiles, inquiries and product materials reduce cooperation friction.</p></div></div></div>
 </section>
 
+
+<section id="news" class="news">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">News & Insights</div>
+      <h2 class="title zh">新闻动态与营养品行业观察</h2>
+      <h2 class="title en">News & Nutrition Industry Insights</h2>
+      <p class="sub zh">关注全球营养健康趋势、跨境进口合规、品牌合作机会，以及荣程国际在优质产品引进和供应链服务方面的最新思考。</p>
+      <p class="sub en">Updates on global nutrition trends, cross-border import compliance, brand partnership opportunities and RONCO’s latest thinking on premium product trade and supply chain services.</p>
+    </div>
+
+    <div class="news-grid">
+      <article class="card news-card">
+        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=1200&q=85" alt="Dietary supplements and nutrition products">
+        <div class="news-body">
+          <div class="news-meta"><span class="news-pill zh">行业观察</span><span class="news-pill en">Insight</span><span>2026.05.22</span></div>
+          <h3 class="zh">全球营养补充剂市场：从单一维生素走向精准健康与复合功能</h3>
+          <h3 class="en">Global Supplements Market: From Basic Vitamins to Precision Wellness</h3>
+          <p class="zh">营养品消费正在从“缺什么补什么”，转向围绕年龄、生活方式和具体健康场景的长期管理。</p>
+          <p class="en">Supplement consumption is moving from basic nutrient replenishment to long-term management around age, lifestyle and health scenarios.</p>
+          <details class="news-read">
+            <summary><span class="zh">阅读全文</span><span class="en">Read Article</span></summary>
+            <div class="news-article-body zh">
+              <p>过去的营养补充剂市场，消费者更多关注维生素C、钙片、复合维生素等基础品类；而今天，市场正在进入更细分的阶段。睡眠、肠道、免疫、儿童成长、女性健康、中老年骨骼与关节管理，正在成为新的消费场景。</p>
+              <p>根据 Grand View Research 的市场数据，全球膳食补充剂市场在2024年的规模约为1870亿美元，并预计到2030年增长至约3192亿美元。这说明营养健康已不再是小众消费，而是逐步成为全球家庭的日常健康预算。</p>
+              <p>这种变化背后有三个核心原因：第一，消费者健康意识提升，更愿意主动管理身体状态；第二，电商和社交媒体让专业知识传播更快，产品教育成本下降；第三，人口老龄化和亚健康问题推动了长期营养管理需求。</p>
+              <p>对中国进口贸易企业而言，这意味着选品不能只看“哪个产品便宜”，而要看品牌是否有清晰的功能场景、稳定的复购逻辑、合规的成分表达和可持续的供应能力。真正有机会的品牌，往往不是靠夸张宣传，而是靠清晰定位、真实配方和长期信任。</p>
+              <p>荣程国际关注的方向，正是从欧洲及其他成熟市场寻找安全、透明、适合中国家庭消费习惯的营养健康产品，并通过跨境供应链能力帮助优质品牌进入中国市场。</p>
+              <div class="news-source">参考资料：<a href="https://www.grandviewresearch.com/horizon/outlook/dietary-supplements-market-size/global" target="_blank" rel="noopener">Grand View Research：Global Dietary Supplements Market Outlook</a></div>
+            </div>
+            <div class="news-article-body en">
+              <p>The supplement market used to be dominated by basic categories such as vitamin C, calcium and multivitamins. Today, demand is becoming more segmented, with consumers paying attention to sleep, gut health, immunity, children’s growth, women’s wellness, and bone or joint support for older adults.</p>
+              <p>According to Grand View Research, the global dietary supplements market was estimated at approximately USD 187 billion in 2024 and is projected to reach about USD 319 billion by 2030. This indicates that nutritional wellness is becoming part of everyday household health spending.</p>
+              <p>Three forces are driving this shift: stronger consumer health awareness, faster product education through e-commerce and social media, and long-term nutrition needs linked to aging populations and modern lifestyles.</p>
+              <p>For import and trade companies in China, product selection should not focus only on low price. Strong candidates need a clear functional scenario, repeat-purchase logic, compliant ingredient communication and stable supply capability.</p>
+              <p>RONCO focuses on identifying transparent, reliable and family-oriented nutrition products from Europe and other mature markets, then supporting their entry into China through cross-border supply chain capabilities.</p>
+              <div class="news-source">Reference: <a href="https://www.grandviewresearch.com/horizon/outlook/dietary-supplements-market-size/global" target="_blank" rel="noopener">Grand View Research: Global Dietary Supplements Market Outlook</a></div>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="card news-card">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=85" alt="Health products and cross-border e-commerce">
+        <div class="news-body">
+          <div class="news-meta"><span class="news-pill zh">中国市场</span><span class="news-pill en">China Market</span><span>2026.05.22</span></div>
+          <h3 class="zh">中国营养健康消费升级：跨境进口品牌仍有结构性机会</h3>
+          <h3 class="en">China’s Wellness Upgrade: Structural Opportunities for Imported Brands</h3>
+          <p class="zh">中国消费者并不是单纯追求“进口”标签，而是在寻找更可信的品质、更清晰的配方和更适合家庭的健康方案。</p>
+          <p class="en">Chinese consumers are no longer buying imported labels alone; they look for credible quality, transparent formulas and family-oriented wellness solutions.</p>
+          <details class="news-read">
+            <summary><span class="zh">阅读全文</span><span class="en">Read Article</span></summary>
+            <div class="news-article-body zh">
+              <p>中国营养健康市场已经过了“只要是国外品牌就容易卖”的阶段。今天的消费者会比较成分、剂量、适用人群、用户评价、平台信誉和价格体系。进口品牌仍有机会，但机会更集中在真正有差异化和长期可信度的产品上。</p>
+              <p>从渠道角度看，跨境电商仍然是海外营养品进入中国的重要路径之一。根据中国关于跨境电商零售进口监管的相关规定，跨境电商零售进口通常需要符合商品清单范围、个人自用属性，并通过能够与海关联网的平台实现交易、支付、物流电子信息的比对。</p>
+              <p>这也提醒海外品牌和中国运营方：跨境进口不是简单“把货发到中国”，而是要同时考虑平台规则、商品清单、中文页面表达、消费者身份信息、物流履约、售后退换和税费结构。</p>
+              <p>对于中小欧洲品牌而言，中国市场并非一定要一开始就做总代理或大规模铺货。更务实的方式，是先通过跨境电商和私域渠道进行小批量验证，观察真实转化率、复购率和用户反馈，再决定是否扩大合作。</p>
+              <p>荣程国际希望承担的角色，不只是物流服务商，而是连接海外品牌、中国平台、中国消费者和合规供应链之间的桥梁。</p>
+              <div class="news-source">参考资料：<a href="https://www.scio.gov.cn/gxzt/zclxcfhzt_25764/gywskjdzswlsjkjgyggzdtz/" target="_blank" rel="noopener">关于完善跨境电子商务零售进口监管有关工作的通知</a>；<a href="https://www.customs.gov.cn/customs/2018-12/13/article_2025121221010384362.html" target="_blank" rel="noopener">海关总署公告2018年第194号</a></div>
+            </div>
+            <div class="news-article-body en">
+              <p>China’s wellness market has moved beyond the stage where “foreign brand” alone is enough. Consumers now compare ingredients, dosage, target users, reviews, platform credibility and price structure. Imported brands still have opportunities, but these opportunities are concentrated in products with real differentiation and long-term trust.</p>
+              <p>Cross-border e-commerce remains an important route for overseas nutrition products entering China. Under China’s regulatory framework, cross-border retail imports generally need to fall within the relevant product list, be for personal use, and support the matching of transaction, payment and logistics data through connected platforms.</p>
+              <p>This means market entry is not simply about shipping products to China. It requires platform compliance, product-list review, Chinese-language communication, consumer identity rules, logistics fulfillment, after-sales handling and tax considerations.</p>
+              <p>For small and medium-sized European brands, a practical approach is to start with controlled testing through cross-border e-commerce and private distribution channels, then evaluate conversion, repeat purchase and consumer feedback before expanding cooperation.</p>
+              <p>RONCO aims to act not only as a logistics service provider, but also as a bridge connecting overseas brands, Chinese platforms, consumers and compliant supply chain execution.</p>
+              <div class="news-source">References: <a href="https://www.scio.gov.cn/gxzt/zclxcfhzt_25764/gywskjdzswlsjkjgyggzdtz/" target="_blank" rel="noopener">Notice on Improving Cross-Border E-commerce Retail Import Supervision</a>; <a href="https://www.customs.gov.cn/customs/2018-12/13/article_2025121221010384362.html" target="_blank" rel="noopener">GACC Announcement No.194, 2018</a></div>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="card news-card">
+        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=1200&q=85" alt="European supplement quality and compliance">
+        <div class="news-body">
+          <div class="news-meta"><span class="news-pill zh">合规视角</span><span class="news-pill en">Compliance</span><span>2026.05.22</span></div>
+          <h3 class="zh">欧洲营养品牌进入中国：合规、透明与科学声称是核心竞争力</h3>
+          <h3 class="en">European Nutrition Brands in China: Compliance, Transparency and Evidence</h3>
+          <p class="zh">欧洲品牌真正适合中国市场的优势，不只是产地，而是更严谨的配方管理、标签表达和科学证据体系。</p>
+          <p class="en">The real advantage of European brands is not origin alone, but disciplined formulation, transparent labeling and evidence-based communication.</p>
+          <details class="news-read">
+            <summary><span class="zh">阅读全文</span><span class="en">Read Article</span></summary>
+            <div class="news-article-body zh">
+              <p>很多海外品牌进入中国市场时，容易把重点放在“欧洲制造”“天然”“高端”等标签上。但对营养品行业来说，真正长期有效的竞争力，是消费者能否看懂、信任并持续复购。</p>
+              <p>欧盟对食品补充剂和营养健康声称有较明确的监管框架。欧盟委员会对食品补充剂的说明强调，这类产品通常是以片剂、胶囊、液体定量等形式提供的浓缩营养或生理作用物质；其规则目标之一，是保护消费者并避免误导性信息。</p>
+              <p>在健康声称方面，欧盟要求相关表述应基于科学证据，并且能够被消费者容易理解。也就是说，品牌不能只靠夸大宣传，而要能把“成分—剂量—作用逻辑—适用人群—使用边界”讲清楚。</p>
+              <p>这对进入中国市场也很重要。中国消费者越来越成熟，对“神奇效果”“快速改善”等表达更警惕。优秀的欧洲品牌如果能够提供清晰配方、规范标签、真实检测文件和稳定批次管理，反而更容易建立长期口碑。</p>
+              <p>荣程国际在筛选海外营养品品牌时，会优先关注品牌历史、生产资质、成分透明度、合规表达、供应稳定性和中国渠道适配度，而不是只看短期价格差。</p>
+              <div class="news-source">参考资料：<a href="https://food.ec.europa.eu/food-safety/labelling-and-nutrition/food-supplements_en" target="_blank" rel="noopener">European Commission: Food Supplements</a>；<a href="https://food.ec.europa.eu/food-safety/labelling-and-nutrition/nutrition-and-health-claims/health-claims_en" target="_blank" rel="noopener">European Commission: Health Claims</a></div>
+            </div>
+            <div class="news-article-body en">
+              <p>When overseas brands enter China, they often focus on labels such as “made in Europe,” “natural” or “premium.” In the nutrition industry, however, sustainable competitiveness depends on whether consumers can understand, trust and repeatedly purchase the product.</p>
+              <p>The European Union has a clear regulatory framework for food supplements and nutrition or health claims. The European Commission describes food supplements as concentrated sources of nutrients or other substances with nutritional or physiological effects, often supplied in dose form such as tablets, capsules or liquids.</p>
+              <p>For health claims, the EU emphasizes scientific evidence and consumer understanding. Brands need to explain the logic of ingredients, dosage, function, target users and usage boundaries, instead of relying on exaggerated promises.</p>
+              <p>This is also important for the Chinese market. Consumers are increasingly cautious about miraculous or fast-result claims. European brands with transparent formulas, proper labels, reliable testing documents and stable batch control are better positioned to build long-term trust.</p>
+              <p>When evaluating overseas nutrition brands, RONCO prioritizes brand history, production qualification, ingredient transparency, compliant communication, supply stability and China-channel suitability over short-term price gaps.</p>
+              <div class="news-source">References: <a href="https://food.ec.europa.eu/food-safety/labelling-and-nutrition/food-supplements_en" target="_blank" rel="noopener">European Commission: Food Supplements</a>; <a href="https://food.ec.europa.eu/food-safety/labelling-and-nutrition/nutrition-and-health-claims/health-claims_en" target="_blank" rel="noopener">European Commission: Health Claims</a></div>
+            </div>
+          </details>
+        </div>
+      </article>
+    </div>
+
+    <div class="news-note zh">提示：以上内容为营养健康行业观察与跨境业务参考，不构成医疗建议、功效承诺或法规意见。正式发布具体产品内容前，应结合产品标签、检测文件、平台规则和中国进口合规要求进行审核。</div>
+    <div class="news-note en">Note: The above content is for nutrition industry insight and cross-border business reference only. It does not constitute medical advice, efficacy claims or legal opinion. Product-specific content should be reviewed against product labels, testing documents, platform rules and China import compliance requirements before publication.</div>
+  </div>
+</section>
+
 <section id="contact" class="contact">
-  <div class="container"><div class="section-head"><div class="kicker">Contact</div><h2 class="title zh">联系我们</h2><h2 class="title en">Contact RONCO</h2><p class="sub zh">欢迎物流客户、海外品牌方、中国制造企业和跨境电商团队联系合作。</p><p class="sub en">We welcome logistics customers, overseas brands, Chinese manufacturers and cross-border e-commerce teams.</p></div><div class="contact-wrap"><div class="contact-box"><h3>RONCO International Supply Chain Technology (Dongguan) Co., Ltd.</h3><div class="contact-row">📍 <span class="zh">广东省东莞市松山湖高新区创意设计城2栋2单元503室</span><span class="en">Unit 503, Building 2, International Creative Design City, Songshan Lake, Dongguan, Guangdong, China</span></div><div class="contact-row">🌐 www.roncolog.com</div><div class="contact-row">✉️ info@roncolog.com</div><div class="contact-row">💼 <span class="zh">国际物流 · 国际贸易 · 供应链解决方案</span><span class="en">International Logistics · Global Trade · Supply Chain Solutions</span></div></div><form class="contact-box form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+  <div class="container"><div class="section-head"><div class="kicker">Contact</div><h2 class="title zh">联系我们</h2><h2 class="title en">Contact RONCO</h2><p class="sub zh">欢迎物流客户、海外品牌方、中国制造企业和跨境电商团队联系合作。</p><p class="sub en">We welcome logistics customers, overseas brands, Chinese manufacturers and cross-border e-commerce teams.</p></div><div class="contact-wrap"><div class="contact-box"><h3>RONCO International Supply Chain Technology (Dongguan) Co., Ltd.</h3><div class="contact-row">📍 <span class="zh">广东省东莞市松山湖高新区创意设计城2栋2单元503室</span><span class="en">Room503, Unit 2, Building 2, International Creative Design City, Songshan Lake, Dongguan, Guangdong, 523808 China.</span></div><div class="contact-row">🌐 www.roncolog.com</div><div class="contact-row">✉️ info@roncolog.com</div><div class="contact-row">💼 <span class="zh">国际物流 · 国际贸易 · 供应链解决方案</span><span class="en">International Logistics · Global Trade · Supply Chain Solutions</span></div></div><form class="contact-box form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
 <input type="hidden" name="access_key" value="430d688d-587b-43db-88ff-ba70832fb263">
 <input type="hidden" name="subject" value="RONCO Website Inquiry / 官网客户咨询">
 <input type="hidden" name="from_name" value="RONCO Website">
