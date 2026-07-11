@@ -142,6 +142,20 @@ const fieldClass =
 const textareaClass =
   "w-full rounded-2xl border border-[#cfe6ee] bg-white px-4 py-3 text-sm leading-7 text-[#071629] outline-none transition placeholder:text-slate-400 focus:border-[#6bbf95] focus:ring-4 focus:ring-[#6bbf95]/15";
 
+function normalizeWebsite(value: string) {
+  const rawWebsite = value.trim();
+
+  if (!rawWebsite) {
+    return "";
+  }
+
+  if (/^https?:\/\//i.test(rawWebsite)) {
+    return rawWebsite;
+  }
+
+  return `https://${rawWebsite}`;
+}
+
 export default function BrandPartnershipForm({
   locale,
 }: BrandPartnershipFormProps) {
@@ -166,7 +180,7 @@ export default function BrandPartnershipForm({
       locale,
       brandName: String(formData.get("brandName") || ""),
       countryRegion: String(formData.get("countryRegion") || ""),
-      website: String(formData.get("website") || ""),
+      website: normalizeWebsite(String(formData.get("website") || "")),
       foundedYear: String(formData.get("foundedYear") || ""),
       companyName: String(formData.get("companyName") || ""),
       productCategories: String(formData.get("productCategories") || ""),
@@ -264,9 +278,14 @@ export default function BrandPartnershipForm({
           <FormField label={copy.website}>
             <input
               name="website"
-              type="url"
+              type="text"
+              inputMode="url"
               className={fieldClass}
-              placeholder="https://"
+              placeholder={
+                locale === "zh"
+                  ? "请输入品牌官网，可不加 https://"
+                  : "Enter the official website. https:// is optional"
+              }
             />
           </FormField>
 

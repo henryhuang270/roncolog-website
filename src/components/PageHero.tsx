@@ -76,11 +76,14 @@ export default function PageHero({
         ) : null}
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+      <div className="relative mx-auto max-w-7xl px-6 py-6 sm:px-8 sm:py-7 lg:px-10 lg:py-8">
         <div
-          className={`grid min-h-[320px] items-center gap-8 lg:min-h-[360px] ${
+          className={`grid items-center gap-8 ${
             isRight ? "lg:grid-cols-[1fr_0.82fr]" : "lg:grid-cols-[0.82fr_1fr]"
           }`}
+          style={{
+            minHeight: "clamp(280px, 38svh, 430px)",
+          }}
         >
           {isRight ? <div className="hidden lg:block" /> : null}
 
@@ -89,13 +92,13 @@ export default function PageHero({
               isRight ? "lg:justify-self-end" : "lg:justify-self-start"
             } ${
               textPanel
-                ? "rounded-[1.7rem] border border-white/70 bg-white/80 p-6 shadow-[0_14px_40px_rgba(15,23,42,0.10)] backdrop-blur-[2px] sm:p-7 lg:p-8"
+                ? "rounded-[1.5rem] border border-white/70 bg-white/80 p-5 shadow-[0_14px_36px_rgba(15,23,42,0.10)] backdrop-blur-[2px] sm:p-6 lg:p-7"
                 : ""
             }`}
           >
             {eyebrow ? (
               <p
-                className={`text-xs font-semibold tracking-[0.22em] ${eyebrowColorClass}`}
+                className={`text-xs font-semibold tracking-[0.2em] ${eyebrowColorClass}`}
                 style={{ textShadow }}
               >
                 {eyebrow}
@@ -103,7 +106,7 @@ export default function PageHero({
             ) : null}
 
             <h1
-              className={`mt-4 text-3xl font-semibold leading-tight tracking-[-0.045em] sm:text-4xl lg:text-5xl ${textColorClass}`}
+              className={`mt-3 text-[clamp(2rem,3.4vw,3.15rem)] font-semibold leading-tight tracking-[-0.045em] ${textColorClass}`}
               style={{ textShadow }}
             >
               {title}
@@ -111,7 +114,7 @@ export default function PageHero({
 
             {bodyText ? (
               <p
-                className={`mt-5 max-w-3xl text-sm leading-7 sm:text-base ${paragraphColorClass}`}
+                className={`mt-4 max-w-3xl text-sm leading-7 sm:text-base ${paragraphColorClass}`}
                 style={{ textShadow }}
               >
                 {bodyText}
@@ -119,7 +122,7 @@ export default function PageHero({
             ) : null}
 
             {hasActions ? (
-              <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+              <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                 {buttons.map((button) => {
                   const isPrimary = button.variant !== "secondary";
 

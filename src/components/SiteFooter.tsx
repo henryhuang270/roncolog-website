@@ -147,8 +147,8 @@ export default function SiteFooter({ locale }: SiteFooterProps) {
 
   return (
     <footer className="border-t border-[#d6e8ee] bg-[linear-gradient(180deg,#eef8fb_0%,#f7fcfb_50%,#eef8f1_100%)] text-[#23445c]">
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.72fr_0.9fr_0.72fr]">
+      <div className="mx-auto max-w-7xl px-6 py-10 sm:px-8 lg:px-10 lg:py-12">
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.72fr_0.9fr_0.72fr]">
           <div>
             <Link href={`/${locale}`} className="inline-flex items-center">
               <Image
@@ -156,30 +156,30 @@ export default function SiteFooter({ locale }: SiteFooterProps) {
                 alt={copy.logoAlt}
                 width={420}
                 height={165}
-                className="h-auto w-[165px] sm:w-[185px]"
+                className="h-auto w-[145px] sm:w-[160px]"
               />
             </Link>
 
-            <p className="mt-6 max-w-md text-sm leading-8 text-[#4b697a]">
+            <p className="mt-4 max-w-md text-sm leading-7 text-[#4b697a]">
               {copy.brandIntro}
             </p>
 
-            <div className="mt-8 inline-flex items-center gap-3 text-xs font-semibold tracking-[0.18em] text-[#c69b42]">
-              <span className="h-px w-10 bg-[#c69b42]" />
+            <div className="mt-5 inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.16em] text-[#c69b42]">
+              <span className="h-px w-8 bg-[#c69b42]" />
               {copy.slogan}
             </div>
 
-            <p className="mt-8 max-w-md text-sm leading-7 text-[#6b8796]">
+            <p className="mt-5 max-w-md text-xs leading-6 text-[#6b8796]">
               {copy.companyName}
             </p>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold tracking-[0.16em] text-[#0b5f83]">
+            <h3 className="text-xs font-semibold tracking-[0.16em] text-[#0b5f83]">
               {copy.logisticsTitle}
             </h3>
 
-            <div className="mt-5 space-y-3">
+            <div className="mt-4 space-y-2.5">
               {copy.logisticsLinks.map((item) => (
                 <Link
                   key={item.href}
@@ -193,16 +193,16 @@ export default function SiteFooter({ locale }: SiteFooterProps) {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold tracking-[0.16em] text-[#0b5f83]">
+            <h3 className="text-xs font-semibold tracking-[0.16em] text-[#0b5f83]">
               {copy.tradeTitle}
             </h3>
 
-            <div className="mt-5 space-y-3">
+            <div className="mt-4 grid gap-x-5 gap-y-2.5 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               {copy.tradeLinks.map((item) => (
                 <Link
                   key={item.href}
                   href={hrefWithLocale(item.href)}
-                  className="block text-sm text-[#23445c] transition hover:text-[#0b6f99]"
+                  className="block text-sm leading-6 text-[#23445c] transition hover:text-[#0b6f99]"
                 >
                   {item.label}
                 </Link>
@@ -211,11 +211,11 @@ export default function SiteFooter({ locale }: SiteFooterProps) {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold tracking-[0.16em] text-[#0b5f83]">
+            <h3 className="text-xs font-semibold tracking-[0.16em] text-[#0b5f83]">
               {copy.companyTitle}
             </h3>
 
-            <div className="mt-5 space-y-3">
+            <div className="mt-4 space-y-2.5">
               {copy.companyLinks.map((item) => (
                 <Link
                   key={item.href}
@@ -227,15 +227,15 @@ export default function SiteFooter({ locale }: SiteFooterProps) {
               ))}
             </div>
 
-            <h3 className="mt-8 text-sm font-semibold tracking-[0.16em] text-[#0b5f83]">
+            <h3 className="mt-6 text-xs font-semibold tracking-[0.16em] text-[#0b5f83]">
               {copy.contactTitle}
             </h3>
 
-            <p className="mt-5 text-sm leading-8 text-[#4b697a]">
+            <p className="mt-4 text-sm leading-7 text-[#4b697a]">
               {copy.contactText}
             </p>
 
-            <div className="mt-6 space-y-2 text-sm text-[#23445c]">
+            <div className="mt-4 space-y-1.5 text-sm text-[#23445c]">
               <a
                 href="mailto:info@roncolog.com"
                 className="block transition hover:text-[#0b6f99]"
@@ -248,14 +248,14 @@ export default function SiteFooter({ locale }: SiteFooterProps) {
 
             <Link
               href={hrefWithLocale("/contact")}
-              className="mt-8 inline-flex rounded-full bg-[#0b6f99] px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(11,111,153,0.18)] transition hover:bg-[#176347]"
+              className="mt-5 inline-flex rounded-full bg-[#0b6f99] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(11,111,153,0.18)] transition hover:bg-[#176347]"
             >
               {copy.contactButton}
             </Link>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-[#d6e8ee] pt-6 text-sm text-[#6b8796] sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-9 flex flex-col gap-4 border-t border-[#d6e8ee] pt-5 text-xs text-[#6b8796] sm:flex-row sm:items-center sm:justify-between">
           <p>{copy.rights}</p>
 
           <div className="flex items-center gap-5">

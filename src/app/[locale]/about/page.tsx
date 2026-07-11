@@ -62,56 +62,6 @@ const content = {
       },
     ],
 
-    scenariosEyebrow: "适合沟通的场景",
-    scenariosTitle: "从一个具体需求开始，而不是从空泛方案开始",
-    scenarios: [
-      {
-        number: "01",
-        title: "中国企业有跨境运输需求",
-        text: "客户已有货物、起运地、目的地、重量体积或预计发运时间，需要评估合适的运输方式。",
-      },
-      {
-        number: "02",
-        title: "中国商品希望进入海外市场",
-        text: "工厂、贸易商或品牌方希望了解商品出口、运输、资料准备和目标市场沟通路径。",
-      },
-      {
-        number: "03",
-        title: "海外品牌希望了解中国市场",
-        text: "海外品牌或供应商希望寻找中国合作伙伴，进行产品资料整理、市场测试和分销合作沟通。",
-      },
-      {
-        number: "04",
-        title: "项目涉及物流与贸易协同",
-        text: "当运输、产品资料、贸易条款、清关要求和合作方式相互关联时，需要先梳理执行顺序。",
-      },
-    ],
-
-    methodEyebrow: "工作方式",
-    methodTitle: "我们先理解需求，再判断路径",
-    methodItems: [
-      {
-        number: "01",
-        title: "了解真实需求",
-        text: "先确认货物、产品、路线、时间、资料和合作目标，避免直接套用模板方案。",
-      },
-      {
-        number: "02",
-        title: "梳理关键资料",
-        text: "围绕货物信息、产品资料、贸易条款、授权条件、合规资料和联系信息进行整理。",
-      },
-      {
-        number: "03",
-        title: "评估可执行方向",
-        text: "根据实际条件判断物流、贸易、品牌合作或分销路径是否具备推进基础。",
-      },
-      {
-        number: "04",
-        title: "推进沟通与执行",
-        text: "在条件清楚后，再推进运输安排、资料沟通、合作洽谈和后续执行。",
-      },
-    ],
-
     boundaryEyebrow: "真实能力边界",
     boundaryTitle: "我们重视清楚表达，不做夸大承诺",
     boundaryText:
@@ -183,57 +133,6 @@ const content = {
         image: "/images/banners/brand-partnership-hero.png",
         href: "/international-trade/overseas-brand-partnership",
         button: "View Brand Partnership",
-      },
-    ],
-
-    scenariosEyebrow: "When to Talk with RONCO",
-    scenariosTitle:
-      "Start from one specific requirement, not from a broad proposal",
-    scenarios: [
-      {
-        number: "01",
-        title: "Chinese companies have cross-border shipment needs",
-        text: "Customers already have cargo, origin, destination, weight, volume or estimated shipping time and need to assess suitable transport options.",
-      },
-      {
-        number: "02",
-        title: "China-made products need overseas market access",
-        text: "Factories, traders or brands want to understand export, transport, document preparation and target-market communication paths.",
-      },
-      {
-        number: "03",
-        title: "Overseas brands want to understand the China market",
-        text: "Overseas brands or suppliers seek China partners for product document preparation, market testing and distribution discussion.",
-      },
-      {
-        number: "04",
-        title: "Projects require logistics and trade coordination",
-        text: "When transport, product documents, trade terms, customs requirements and cooperation models are linked, execution order should be clarified first.",
-      },
-    ],
-
-    methodEyebrow: "How We Work",
-    methodTitle: "We understand the need first, then assess the path",
-    methodItems: [
-      {
-        number: "01",
-        title: "Understand the real requirement",
-        text: "We clarify cargo, product, route, timing, documents and cooperation objectives before using any standard approach.",
-      },
-      {
-        number: "02",
-        title: "Organize key information",
-        text: "We organize cargo details, product documents, trade terms, authorization conditions, compliance materials and contact information.",
-      },
-      {
-        number: "03",
-        title: "Assess executable directions",
-        text: "Based on actual conditions, we assess whether logistics, trade, brand cooperation or distribution paths are ready to proceed.",
-      },
-      {
-        number: "04",
-        title: "Advance communication and execution",
-        text: "When conditions are clear, we move into transport arrangement, document communication, cooperation discussion and execution.",
       },
     ],
 
@@ -377,76 +276,6 @@ export default async function AboutPage({
                     {item.button}
                   </Link>
                 </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white px-6 py-16 sm:px-8 lg:px-10 lg:py-20">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-4xl">
-            <p className="text-xs font-semibold tracking-[0.18em] text-[#24775b]">
-              {copy.scenariosEyebrow}
-            </p>
-
-            <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-[-0.035em] text-[#071629] sm:text-4xl">
-              {copy.scenariosTitle}
-            </h2>
-          </div>
-
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {copy.scenarios.map((item) => (
-              <article
-                key={item.number}
-                className="rounded-3xl border border-[#dcebf0] bg-[#f7fbfc] p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(31,93,122,0.10)]"
-              >
-                <p className="text-xs font-semibold tracking-[0.16em] text-[#39a773]">
-                  {item.number}
-                </p>
-
-                <h3 className="mt-5 text-xl font-semibold leading-snug text-[#071629]">
-                  {item.title}
-                </h3>
-
-                <p className="mt-4 text-sm leading-7 text-slate-600">
-                  {item.text}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#eef7fb] px-6 py-16 sm:px-8 lg:px-10 lg:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.78fr_1.22fr]">
-          <div>
-            <p className="text-xs font-semibold tracking-[0.18em] text-[#24775b]">
-              {copy.methodEyebrow}
-            </p>
-
-            <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-[-0.035em] text-[#071629] sm:text-4xl">
-              {copy.methodTitle}
-            </h2>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2">
-            {copy.methodItems.map((item) => (
-              <article
-                key={item.number}
-                className="rounded-3xl border border-[#dcebf0] bg-white p-6 shadow-sm"
-              >
-                <p className="text-xs font-semibold tracking-[0.16em] text-[#39a773]">
-                  {item.number}
-                </p>
-
-                <h3 className="mt-5 text-xl font-semibold text-[#071629]">
-                  {item.title}
-                </h3>
-
-                <p className="mt-4 text-sm leading-7 text-slate-600">
-                  {item.text}
-                </p>
               </article>
             ))}
           </div>

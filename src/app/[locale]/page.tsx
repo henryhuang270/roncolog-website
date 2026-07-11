@@ -198,7 +198,7 @@ export default async function LocaleHome({
     <main className="bg-[#f7fbfc] text-[#071629]">
       <HomeBannerCarousel locale={currentLocale} />
 
-      <section className="bg-white px-6 py-20 sm:px-8 lg:px-10 lg:py-24">
+      <section id="business-overview" className="scroll-mt-24 bg-white px-6 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
           <div className="overflow-hidden rounded-[2rem] border border-[#dcebf0] bg-[#eef7fb] p-3 shadow-[0_22px_60px_rgba(31,93,122,0.12)]">
             <img
