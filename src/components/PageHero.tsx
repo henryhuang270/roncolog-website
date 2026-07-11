@@ -23,6 +23,7 @@ type PageHeroProps = {
   contentAlign?: "left" | "right";
   overlay?: boolean;
   textPanel?: boolean;
+  height?: "standard" | "full";
 };
 
 export default function PageHero({
@@ -39,8 +40,10 @@ export default function PageHero({
   contentAlign = "left",
   overlay = false,
   textPanel = false,
+  height = "standard",
 }: PageHeroProps) {
   const isRight = contentAlign === "right";
+  const isFullHeight = height === "full";
   const bodyText = description ?? subtitle;
   const hasActions = buttons.length > 0 || children;
 
@@ -76,13 +79,21 @@ export default function PageHero({
         ) : null}
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-6 sm:px-8 sm:py-7 lg:px-10 lg:py-8">
+      <div
+        className={`relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 ${
+          isFullHeight
+            ? "py-10 sm:py-12 lg:py-14"
+            : "py-6 sm:py-7 lg:py-8"
+        }`}
+      >
         <div
           className={`grid items-center gap-8 ${
             isRight ? "lg:grid-cols-[1fr_0.82fr]" : "lg:grid-cols-[0.82fr_1fr]"
           }`}
           style={{
-            minHeight: "clamp(280px, 38svh, 430px)",
+            minHeight: isFullHeight
+              ? "calc(100svh - 86px)"
+              : "clamp(280px, 38svh, 430px)",
           }}
         >
           {isRight ? <div className="hidden lg:block" /> : null}
@@ -106,7 +117,11 @@ export default function PageHero({
             ) : null}
 
             <h1
-              className={`mt-3 text-[clamp(2rem,3.4vw,3.15rem)] font-semibold leading-tight tracking-[-0.045em] ${textColorClass}`}
+              className={`mt-3 font-semibold leading-tight tracking-[-0.045em] ${textColorClass} ${
+                isFullHeight
+                  ? "text-[clamp(2.2rem,4vw,4rem)]"
+                  : "text-[clamp(2rem,3.4vw,3.15rem)]"
+              }`}
               style={{ textShadow }}
             >
               {title}
@@ -114,7 +129,11 @@ export default function PageHero({
 
             {bodyText ? (
               <p
-                className={`mt-4 max-w-3xl text-sm leading-7 sm:text-base ${paragraphColorClass}`}
+                className={`mt-4 max-w-3xl leading-7 ${paragraphColorClass} ${
+                  isFullHeight
+                    ? "text-base sm:text-lg sm:leading-8"
+                    : "text-sm sm:text-base"
+                }`}
                 style={{ textShadow }}
               >
                 {bodyText}
