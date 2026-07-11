@@ -273,8 +273,9 @@ export default async function OverseasBrandPartnershipPage({
         title={copy.title}
         subtitle={copy.subtitle}
         image="/images/banners/brand-partnership-hero.png"
-        imagePosition="74% center"
+        imagePosition="74% 20%"
         tone="light"
+        height="full"
       />
 
       <section className="bg-white px-6 py-20 sm:px-8 lg:px-10 lg:py-24">

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import PageHero from "../../../../components/PageHero";
 
 type Locale = "en" | "zh";
 
@@ -159,14 +158,31 @@ export default async function GoodsImportExportPage({
 
   return (
     <main className="bg-[#f7fbfc] text-[#071629]">
-      <PageHero
-        eyebrow={copy.eyebrow}
-        title={copy.title}
-        subtitle={copy.subtitle}
-        image="/images/banners/international-trade-hero.png"
-        imagePosition="72% center"
-        tone="light"
-      />
+            <section className="bg-[#eef7fb] px-6 pb-10 pt-8 sm:px-8 lg:px-10 lg:pb-14 lg:pt-10">
+        <div className="mx-auto grid max-w-7xl gap-8 overflow-hidden rounded-[2rem] border border-[#d7e8ee] bg-white shadow-[0_20px_50px_rgba(31,93,122,0.12)] lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
+          <div className="relative min-h-[300px] lg:min-h-[520px]">
+            <img
+              src="/images/banners/international-trade-import-export-banner.png"
+              alt={copy.title}
+              className="absolute inset-0 h-full w-full object-cover object-left"
+            />
+          </div>
+
+          <div className="px-6 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-12">
+            <p className="text-xs font-semibold tracking-[0.18em] text-[#d89d2b]">
+              {copy.eyebrow}
+            </p>
+
+            <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#071629] sm:text-5xl lg:text-[3.5rem]">
+              {copy.title}
+            </h1>
+
+            <p className="mt-6 max-w-xl text-base leading-8 text-slate-700 sm:text-lg">
+              {copy.subtitle}
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section className="bg-white px-6 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">

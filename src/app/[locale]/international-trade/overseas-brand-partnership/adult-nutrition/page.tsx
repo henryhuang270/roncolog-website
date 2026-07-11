@@ -172,8 +172,9 @@ export default async function AdultNutritionPage({
         title={copy.title}
         subtitle={copy.subtitle}
         image="/images/adult-nutrition/adult-family-hero.png"
-        imagePosition="70% center"
+        imagePosition="70% 15%"
         tone="light"
+        height="full"
       />
 
       <section className="bg-white px-6 py-20 sm:px-8 lg:px-10 lg:py-24">

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import PageHero from "../../../../components/PageHero";
 
 type Locale = "en" | "zh";
 
@@ -138,29 +137,42 @@ export default async function RoncoGlobalSelectPage({
 
   return (
     <main className="bg-[#f7fbfc] text-[#071629]">
-      <PageHero
-        eyebrow={copy.eyebrow}
-        title={copy.title}
-        subtitle={copy.subtitle}
-        image="/images/banners/brand-partnership-hero.png"
-        imagePosition="72% center"
-        tone="light"
-      />
+            <section className="bg-[#eef7fb] px-6 pb-0 pt-8 sm:px-8 lg:px-10 lg:pt-10">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-t-[2rem] border border-b-0 border-[#d7e8ee] bg-white shadow-[0_20px_50px_rgba(31,93,122,0.12)]">
+          <img
+            src="/images/banners/ronco-global-select-banner.png"
+            alt={copy.eyebrow}
+            className="h-[260px] w-full object-cover object-center sm:h-[320px] lg:h-[500px]"
+          />
+        </div>
+      </section>
 
-      <section className="bg-white px-6 py-20 sm:px-8 lg:px-10 lg:py-24">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
-            <p className="text-xs font-semibold tracking-[0.18em] text-[#24775b]">
+      <section className="bg-white px-6 pb-20 pt-0 sm:px-8 lg:px-10 lg:pb-24">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-b-[2rem] border border-t-0 border-[#d7e8ee] bg-white px-6 py-10 shadow-[0_20px_50px_rgba(31,93,122,0.12)] sm:px-10 lg:px-12 lg:py-12">
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="text-xs font-semibold tracking-[0.18em] text-[#d89d2b]">
+              {copy.eyebrow}
+            </p>
+
+            <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#071629] sm:text-5xl lg:text-[3.35rem]">
+              {copy.title}
+            </h1>
+
+            <p className="mt-6 text-base leading-8 text-slate-700 sm:text-lg">
+              {copy.subtitle}
+            </p>
+          </div>
+
+          <div className="mx-auto mt-10 max-w-5xl rounded-[2rem] border border-[#dcebf0] bg-[#f7fbfc] p-7 shadow-sm sm:p-8">
+            <p className="text-center text-xs font-semibold tracking-[0.18em] text-[#24775b]">
               {copy.statusLabel}
             </p>
 
-            <h2 className="mt-5 max-w-3xl text-3xl font-semibold leading-tight tracking-[-0.035em] text-[#071629] sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 text-center text-2xl font-semibold leading-tight tracking-[-0.03em] text-[#071629] sm:text-3xl">
               {copy.statusTitle}
             </h2>
-          </div>
 
-          <div className="rounded-[2rem] border border-[#dcebf0] bg-[#f7fbfc] p-7 shadow-sm sm:p-8">
-            <p className="text-base leading-8 text-slate-700">
+            <p className="mt-5 text-center text-base leading-8 text-slate-700">
               {copy.statusText}
             </p>
           </div>
