@@ -25,16 +25,19 @@ const pageContent = {
         title: "全球物流",
         text: "海运、空运、铁路、陆运及多式联运协调",
         icon: "route",
+        href: "/global-logistics",
       },
       {
         title: "国际贸易",
         text: "协助中国商品出海与海外商品进入中国",
         icon: "trade",
+        href: "/international-trade",
       },
       {
         title: "海外品牌引进与分销",
         text: "连接海外优质品牌，推进引进与中国市场分销",
         icon: "brand",
+        href: "/international-trade/overseas-brand-partnership",
       },
     ],
     logisticsEyebrow: "全球物流业务范围",
@@ -104,16 +107,19 @@ const pageContent = {
         title: "Global Logistics",
         text: "Sea, air, rail, road and multimodal transportation coordination",
         icon: "route",
+        href: "/global-logistics",
       },
       {
         title: "International Trade",
         text: "Supporting China-made products going overseas and overseas goods entering China",
         icon: "trade",
+        href: "/international-trade",
       },
       {
         title: "Overseas Brand Partnership",
         text: "Connecting overseas brands with practical China market-entry discussions",
         icon: "brand",
+        href: "/international-trade/overseas-brand-partnership",
       },
     ],
     logisticsEyebrow: "Global Logistics Scope",
@@ -223,20 +229,33 @@ export default async function LocaleHome({
 
             <div className="mt-8 grid gap-4 md:grid-cols-3">
               {copy.introCards.map((card) => (
-                <div
+                <Link
                   key={card.title}
-                  className="rounded-3xl border border-[#dcebf0] bg-[#f7fbfc] p-5 transition hover:-translate-y-1 hover:border-[#a8dbc6] hover:bg-[#f3fff8]"
+                  href={`/${currentLocale}${card.href}`}
+                  aria-label={card.title}
+                  className="group rounded-3xl border border-[#dcebf0] bg-[#f7fbfc] p-5 transition hover:-translate-y-1 hover:border-[#a8dbc6] hover:bg-[#f3fff8] hover:shadow-[0_14px_34px_rgba(31,93,122,0.10)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#39a773] focus-visible:ring-offset-2"
                 >
                   <LineIcon type={card.icon} />
 
-                  <h3 className="mt-5 text-base font-semibold text-[#071629]">
-                    {card.title}
-                  </h3>
+                  <div className="mt-5 flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="text-base font-semibold text-[#071629]">
+                        {card.title}
+                      </h3>
 
-                  <p className="mt-3 text-sm leading-6 text-slate-600">
-                    {card.text}
-                  </p>
-                </div>
+                      <p className="mt-3 text-sm leading-6 text-slate-600">
+                        {card.text}
+                      </p>
+                    </div>
+
+                    <span
+                      aria-hidden="true"
+                      className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#9fd5c0] text-[#24775b] transition group-hover:bg-[#39a773] group-hover:text-white"
+                    >
+                      →
+                    </span>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
