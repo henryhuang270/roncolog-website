@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -16,7 +17,7 @@ const slides = {
       title: "以国际物流为基础，\n连接商品、市场与交付。",
       description:
         "荣程国际立足东莞松山湖，围绕跨境运输、商品进出口和海外品牌合作，持续建设物流协调、供应链协同与市场分销能力。",
-      image: "/images/banners/home-banner-01-company-vision.png",
+      image: "/images/banners/home-banner-01-company-vision.webp",
       imagePosition: "center center",
       primaryLabel: "了解荣程国际",
       primaryHref: "/zh/about",
@@ -30,7 +31,7 @@ const slides = {
       title: "从真实货物出发，\n协调合适的跨境运输路径。",
       description:
         "根据货物、起运地、目的地、时效与交付要求，协调海运、空运、铁路运输、陆运及多式联运。",
-      image: "/images/banners/home-banner-02-global-logistics.png",
+      image: "/images/banners/home-banner-02-global-logistics.webp",
       imagePosition: "center center",
       primaryLabel: "提交运输咨询",
       primaryHref: "/zh/global-logistics/freight-inquiry",
@@ -44,7 +45,7 @@ const slides = {
       title: "从产品筛选到市场测试，\n推动商品双向流通。",
       description:
         "围绕国内外优质产品，推进资料评估、供应链协调、市场测试以及电商和渠道合作，让商品更稳妥地进入目标市场。",
-      image: "/images/banners/home-banner-03-trade-distribution.png",
+      image: "/images/banners/home-banner-03-trade-distribution.webp",
       imagePosition: "center center",
       primaryLabel: "了解国际贸易",
       primaryHref: "/zh/international-trade",
@@ -60,7 +61,7 @@ const slides = {
       title: "Built on global logistics.\nConnecting products, markets and delivery.",
       description:
         "Based in Dongguan Songshan Lake, RONCO develops practical capabilities across cross-border logistics, international trade, brand partnerships and market distribution.",
-      image: "/images/banners/home-banner-01-company-vision.png",
+      image: "/images/banners/home-banner-01-company-vision.webp",
       imagePosition: "center center",
       primaryLabel: "About RONCO",
       primaryHref: "/en/about",
@@ -74,7 +75,7 @@ const slides = {
       title: "Starting with the cargo,\nwe coordinate the right transport route.",
       description:
         "Based on cargo, origin, destination, timing and delivery requirements, RONCO coordinates ocean, air, rail, road and multimodal transport.",
-      image: "/images/banners/home-banner-02-global-logistics.png",
+      image: "/images/banners/home-banner-02-global-logistics.webp",
       imagePosition: "center center",
       primaryLabel: "Submit a Shipping Enquiry",
       primaryHref: "/en/global-logistics/freight-inquiry",
@@ -88,7 +89,7 @@ const slides = {
       title: "From product selection to market testing,\nwe help products move across markets.",
       description:
         "RONCO supports product evaluation, supply-chain coordination, market testing, e-commerce collaboration and channel development for selected products from China and overseas.",
-      image: "/images/banners/home-banner-03-trade-distribution.png",
+      image: "/images/banners/home-banner-03-trade-distribution.webp",
       imagePosition: "center center",
       primaryLabel: "Explore International Trade",
       primaryHref: "/en/international-trade",
@@ -253,11 +254,15 @@ export default function HomeBannerCarousel({
               }}
               aria-hidden={!isCurrent}
             >
-              <img
+              <Image
                 src={slide.image}
                 alt=""
+                fill
+                priority={index === 1}
+                quality={85}
+                sizes="100vw"
                 draggable={false}
-                className={`absolute inset-0 h-full w-full object-cover brightness-[1.02] saturate-[1.02] transition-transform duration-[1300ms] ease-out ${
+                className={`object-cover brightness-[1.02] saturate-[1.02] transition-transform duration-[1300ms] ease-out ${
                   isCurrent ? "scale-100" : "scale-[1.025]"
                 }`}
                 style={{ objectPosition: slide.imagePosition }}

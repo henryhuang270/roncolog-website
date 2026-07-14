@@ -1,5 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -25,47 +24,47 @@ const content = {
       {
         title: "补钙产品",
         desc: "关注成年人和中老年日常营养管理中的钙类产品方向。",
-        image: "/images/adult-nutrition/calcium-support.png",
+        image: "/images/adult-nutrition/calcium-support.webp",
       },
       {
         title: "软骨素 / 关节营养",
         desc: "关注成年人和中老年日常活动场景下的关节营养产品方向。",
-        image: "/images/adult-nutrition/glucosamine-chondroitin.png",
+        image: "/images/adult-nutrition/glucosamine-chondroitin.webp",
       },
       {
         title: "护眼营养",
         desc: "关注成年人日常用眼、办公和电子屏幕使用场景下的营养产品方向。",
-        image: "/images/adult-nutrition/eye-health.png",
+        image: "/images/adult-nutrition/eye-health.webp",
       },
       {
         title: "免疫营养支持",
         desc: "关注成年人日常营养管理和健康生活方式相关的免疫营养方向。",
-        image: "/images/adult-nutrition/immune-support.png",
+        image: "/images/adult-nutrition/immune-support.webp",
       },
       {
         title: "Omega-3",
         desc: "关注成年人日常营养补充和健康生活方式场景下的 Omega-3 产品方向。",
-        image: "/images/adult-nutrition/omega-3.png",
+        image: "/images/adult-nutrition/omega-3.webp",
       },
       {
         title: "肝脏健康支持",
         desc: "关注成年人熬夜、应酬和日常健康管理场景下的营养产品方向。",
-        image: "/images/adult-nutrition/liver-support.png",
+        image: "/images/adult-nutrition/liver-support.webp",
       },
       {
         title: "睡眠支持",
         desc: "关注成年人工作压力、作息管理和夜间休息场景下的营养产品方向。",
-        image: "/images/adult-nutrition/sleep-support.png",
+        image: "/images/adult-nutrition/sleep-support.webp",
       },
       {
         title: "益生菌",
         desc: "关注成年人肠道健康管理和日常营养支持相关的产品方向。",
-        image: "/images/adult-nutrition/probiotics.png",
+        image: "/images/adult-nutrition/probiotics.webp",
       },
       {
         title: "健康老化 / 抗氧化方向",
         desc: "关注成年人长期健康管理、健康老化和抗氧化相关营养产品方向。",
-        image: "/images/adult-nutrition/anti-aging.png",
+        image: "/images/adult-nutrition/anti-aging.webp",
       },
     ],
     noteTitle: "合作说明",
@@ -95,47 +94,47 @@ const content = {
       {
         title: "Calcium Support",
         desc: "Focused on calcium products for adult and healthy-ageing daily nutrition management.",
-        image: "/images/adult-nutrition/calcium-support.png",
+        image: "/images/adult-nutrition/calcium-support.webp",
       },
       {
         title: "Glucosamine / Joint Nutrition",
         desc: "Focused on joint nutrition directions for adult and healthy-ageing activity scenarios.",
-        image: "/images/adult-nutrition/glucosamine-chondroitin.png",
+        image: "/images/adult-nutrition/glucosamine-chondroitin.webp",
       },
       {
         title: "Eye Health Nutrition",
         desc: "Focused on adult daily eye-use, office work and screen-use nutrition scenarios.",
-        image: "/images/adult-nutrition/eye-health.png",
+        image: "/images/adult-nutrition/eye-health.webp",
       },
       {
         title: "Immune Nutrition Support",
         desc: "Focused on adult daily nutrition management and healthy lifestyle support.",
-        image: "/images/adult-nutrition/immune-support.png",
+        image: "/images/adult-nutrition/immune-support.webp",
       },
       {
         title: "Omega-3",
         desc: "Focused on Omega-3 product directions for adult daily nutrition and healthy lifestyle scenarios.",
-        image: "/images/adult-nutrition/omega-3.png",
+        image: "/images/adult-nutrition/omega-3.webp",
       },
       {
         title: "Liver Health Support",
         desc: "Focused on adult wellness management scenarios related to late nights, business meals and lifestyle routines.",
-        image: "/images/adult-nutrition/liver-support.png",
+        image: "/images/adult-nutrition/liver-support.webp",
       },
       {
         title: "Sleep Support",
         desc: "Focused on adult work pressure, routine management and nighttime wellness scenarios.",
-        image: "/images/adult-nutrition/sleep-support.png",
+        image: "/images/adult-nutrition/sleep-support.webp",
       },
       {
         title: "Probiotics",
         desc: "Focused on adult gut-health management and daily nutrition support directions.",
-        image: "/images/adult-nutrition/probiotics.png",
+        image: "/images/adult-nutrition/probiotics.webp",
       },
       {
         title: "Healthy Ageing / Antioxidant Direction",
         desc: "Focused on long-term wellness, healthy ageing and antioxidant-related nutrition directions.",
-        image: "/images/adult-nutrition/anti-aging.png",
+        image: "/images/adult-nutrition/anti-aging.webp",
       },
     ],
     noteTitle: "Cooperation Note",
@@ -171,7 +170,7 @@ export default async function AdultNutritionPage({
         eyebrow={copy.eyebrow}
         title={copy.title}
         subtitle={copy.subtitle}
-        image="/images/adult-nutrition/adult-family-hero.png"
+        image="/images/adult-nutrition/adult-family-hero.webp"
         imagePosition="70% 15%"
         tone="light"
         height="full"
@@ -224,11 +223,14 @@ export default async function AdultNutritionPage({
                 key={`${item.title}-${index}`}
                 className="group w-[310px] shrink-0 overflow-hidden rounded-[1.8rem] border border-[#d7e8ee] bg-white shadow-[0_14px_34px_rgba(31,93,122,0.10)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_46px_rgba(31,93,122,0.14)]"
               >
-                <div className="overflow-hidden bg-[#f7fbfc]">
-                  <img
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#f7fbfc]">
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                    fill
+                    quality={85}
+                    sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition duration-500 group-hover:scale-[1.04]"
                   />
                 </div>
 

@@ -1,5 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -25,42 +24,42 @@ const content = {
       {
         title: "钙镁锌",
         desc: "关注儿童成长阶段常见的矿物质营养补充方向。",
-        image: "/images/children-nutrition/calcium-magnesium-zinc.png",
+        image: "/images/children-nutrition/calcium-magnesium-zinc.webp",
       },
       {
         title: "维生素 A&D",
         desc: "关注儿童日常营养补充场景下的基础营养产品方向。",
-        image: "/images/children-nutrition/vitamin-ad-drops.png",
+        image: "/images/children-nutrition/vitamin-ad-drops.webp",
       },
       {
         title: "DHA",
         desc: "关注儿童成长阶段常见的 DHA 营养补充产品方向。",
-        image: "/images/children-nutrition/dha-softgels.png",
+        image: "/images/children-nutrition/dha-softgels.webp",
       },
       {
         title: "Omega-3 鱼油",
         desc: "关注适合儿童食用方式和规格说明的 Omega-3 产品方向。",
-        image: "/images/children-nutrition/omega-3-fish-oil.png",
+        image: "/images/children-nutrition/omega-3-fish-oil.webp",
       },
       {
         title: "藻油",
         desc: "关注适合儿童营养场景的藻油类产品方向。",
-        image: "/images/children-nutrition/algal-oil-drops.png",
+        image: "/images/children-nutrition/algal-oil-drops.webp",
       },
       {
         title: "K2 + D3",
         desc: "关注复合营养方向，具体需结合产品资料、标签说明和适用人群判断。",
-        image: "/images/children-nutrition/k2-d3-drops.png",
+        image: "/images/children-nutrition/k2-d3-drops.webp",
       },
       {
         title: "益生菌",
         desc: "关注儿童日常营养与肠道健康管理相关产品方向。",
-        image: "/images/children-nutrition/probiotics.png",
+        image: "/images/children-nutrition/probiotics.webp",
       },
       {
         title: "儿童多维",
         desc: "关注儿童日常多种营养补充产品方向。",
-        image: "/images/children-nutrition/children-multivitamin.png",
+        image: "/images/children-nutrition/children-multivitamin.webp",
       },
     ],
     noteTitle: "合作说明",
@@ -90,42 +89,42 @@ const content = {
       {
         title: "Calcium Magnesium Zinc",
         desc: "Focused on mineral nutrition directions for children’s growth-stage scenarios.",
-        image: "/images/children-nutrition/calcium-magnesium-zinc.png",
+        image: "/images/children-nutrition/calcium-magnesium-zinc.webp",
       },
       {
         title: "Vitamin A&D",
         desc: "Focused on basic daily nutrition directions for children.",
-        image: "/images/children-nutrition/vitamin-ad-drops.png",
+        image: "/images/children-nutrition/vitamin-ad-drops.webp",
       },
       {
         title: "DHA",
         desc: "Focused on DHA nutrition directions for children’s growth-stage products.",
-        image: "/images/children-nutrition/dha-softgels.png",
+        image: "/images/children-nutrition/dha-softgels.webp",
       },
       {
         title: "Omega-3 Fish Oil",
         desc: "Focused on Omega-3 products suitable for children’s usage and specification needs.",
-        image: "/images/children-nutrition/omega-3-fish-oil.png",
+        image: "/images/children-nutrition/omega-3-fish-oil.webp",
       },
       {
         title: "Algal Oil",
         desc: "Focused on algal-oil product directions suitable for children nutrition scenarios.",
-        image: "/images/children-nutrition/algal-oil-drops.png",
+        image: "/images/children-nutrition/algal-oil-drops.webp",
       },
       {
         title: "K2 + D3",
         desc: "Focused on combined nutrition directions, subject to product documents and label review.",
-        image: "/images/children-nutrition/k2-d3-drops.png",
+        image: "/images/children-nutrition/k2-d3-drops.webp",
       },
       {
         title: "Probiotics",
         desc: "Focused on children nutrition and daily gut-health related product directions.",
-        image: "/images/children-nutrition/probiotics.png",
+        image: "/images/children-nutrition/probiotics.webp",
       },
       {
         title: "Children Multivitamins",
         desc: "Focused on children’s daily multiple-nutrition product directions.",
-        image: "/images/children-nutrition/children-multivitamin.png",
+        image: "/images/children-nutrition/children-multivitamin.webp",
       },
     ],
     noteTitle: "Cooperation Note",
@@ -159,7 +158,7 @@ export default async function ChildrenNutritionPage({
         eyebrow={copy.eyebrow}
         title={copy.title}
         subtitle={copy.subtitle}
-        image="/images/children-nutrition/children-family-hero.png"
+        image="/images/children-nutrition/children-family-hero.webp"
         imagePosition="70% 15%"
         tone="light"
         height="full"
@@ -207,11 +206,14 @@ export default async function ChildrenNutritionPage({
                 key={item.title}
                 className="group overflow-hidden rounded-[1.8rem] border border-[#d7e8ee] bg-white shadow-[0_14px_34px_rgba(31,93,122,0.10)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_46px_rgba(31,93,122,0.14)]"
               >
-                <div className="overflow-hidden bg-[#f7fbfc]">
-                  <img
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#f7fbfc]">
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                    fill
+                    quality={85}
+                    sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition duration-500 group-hover:scale-[1.04]"
                   />
                 </div>
 

@@ -9,6 +9,7 @@ import {
   getArticleText,
   getPublishedArticleBySlug,
   getPublishedArticles,
+  type ArticleContentImage,
   type ArticleLocale,
   type SiteArticle,
 } from "../../../../lib/site-articles";
@@ -157,9 +158,20 @@ export default async function InsightArticlePage({
   const articleCopy = getArticleText(article, currentLocale as ArticleLocale);
   const relatedArticles = getRelatedArticles(allArticles, article);
   const categoryOptions = getCategoryOptions(currentLocale);
-  const paragraphs = articleCopy.content
+  const contentImages = Array.isArray(article.content_images)
+    ? article.content_images
+    : [];
+
+  const contentImageMap = new Map(
+    contentImages.map((image: ArticleContentImage) => [
+      image.marker,
+      image,
+    ]),
+  );
+
+  const contentBlocks = articleCopy.content
     .split(/\n\s*\n/)
-    .map((paragraph) => paragraph.trim())
+    .map((block) => block.trim())
     .filter(Boolean);
 
   const coverImage =
@@ -238,9 +250,40 @@ export default async function InsightArticlePage({
               </Link>
 
               <div className="mt-10 space-y-7 text-base leading-9 text-slate-700 sm:text-lg">
-                {paragraphs.map((paragraph, index) => (
-                  <p key={`${article.id}-${index}`}>{paragraph}</p>
-                ))}
+                {contentBlocks.map((block, index) => {
+                  const markerMatch = block.match(/^\[\[(image-\d+)\]\]$/);
+                  const contentImage = markerMatch
+                    ? contentImageMap.get(markerMatch[1])
+                    : undefined;
+
+                  if (contentImage) {
+                    const caption =
+                      currentLocale === "zh"
+                        ? contentImage.caption_zh
+                        : contentImage.caption_en ||
+                          contentImage.caption_zh;
+
+                    return (
+                      <figure
+                        key={`${article.id}-${contentImage.id}`}
+                        className="my-10 overflow-hidden rounded-[2px] border border-slate-200 bg-[#f8fafc]"
+                      >
+                        <img
+                          src={contentImage.url}
+                          alt={caption || articleCopy.title}
+                          className="h-auto w-full object-cover"
+                        />
+                        {caption ? (
+                          <figcaption className="border-t border-slate-200 px-5 py-3 text-center text-sm leading-6 text-slate-500">
+                            {caption}
+                          </figcaption>
+                        ) : null}
+                      </figure>
+                    );
+                  }
+
+                  return <p key={`${article.id}-${index}`}>{block}</p>;
+                })}
               </div>
             </div>
           </article>

@@ -1,7 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
-
-import { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { ReactNode } from "react";
 
 type HeroButton = {
   label: string;
@@ -61,10 +60,14 @@ export default function PageHero({
   return (
     <section className="relative overflow-hidden bg-[#eef7fb]">
       <div className="absolute inset-0">
-        <img
+        <Image
           src={image}
           alt={imageAlt ?? title}
-          className="h-full w-full object-cover"
+          fill
+          priority
+          quality={85}
+          sizes="100vw"
+          className="object-cover"
           style={{ objectPosition: imagePosition }}
         />
 

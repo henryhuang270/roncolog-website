@@ -2,6 +2,15 @@ import "server-only";
 
 import { supabaseServer } from "./supabase-server";
 
+export type ArticleContentImage = {
+  id: string;
+  marker: string;
+  url: string;
+  path: string;
+  caption_zh: string;
+  caption_en: string;
+};
+
 export type SiteArticle = {
   id: string;
   slug: string;
@@ -18,6 +27,7 @@ export type SiteArticle = {
   title_en: string;
   excerpt_en: string;
   content_en: string;
+  content_images: ArticleContentImage[];
   created_at: string;
   updated_at: string;
 };
@@ -40,6 +50,7 @@ const articleFields = `
   title_en,
   excerpt_en,
   content_en,
+  content_images,
   created_at,
   updated_at
 `;

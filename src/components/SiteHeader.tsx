@@ -14,6 +14,7 @@ const labels = {
     trade: "International Trade",
     insights: "Insights",
     about: "About RONCO",
+    careers: "Careers",
     contact: "Contact",
     language: "中文",
     menu: "MENU",
@@ -79,6 +80,7 @@ const labels = {
     trade: "国际贸易",
     insights: "新闻洞察",
     about: "关于荣程国际",
+    careers: "加入我们",
     contact: "联系我们",
     language: "EN",
     menu: "菜单",
@@ -257,6 +259,13 @@ export default function SiteHeader({ locale }: SiteHeaderProps) {
           >
             {copy.about}
           </Link>
+
+          <Link
+            href={localeHref("/careers")}
+            className="transition hover:text-[#0b6f99]"
+          >
+            {copy.careers}
+          </Link>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -359,6 +368,13 @@ export default function SiteHeader({ locale }: SiteHeaderProps) {
                 className="block border-t border-[#edf4f6] py-3 text-sm font-semibold text-[#071629]"
               >
                 {copy.about}
+              </Link>
+
+              <Link
+                href={localeHref("/careers")}
+                className="block border-t border-[#edf4f6] py-3 text-sm font-semibold text-[#071629]"
+              >
+                {copy.careers}
               </Link>
 
               <Link

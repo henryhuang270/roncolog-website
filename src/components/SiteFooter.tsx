@@ -58,6 +58,7 @@ const footerContent = {
     companyLinks: [
       { label: "新闻洞察", href: "/insights" },
       { label: "关于荣程国际", href: "/about" },
+      { label: "加入我们", href: "/careers" },
       { label: "联系我们", href: "/contact" },
     ],
 
@@ -124,6 +125,7 @@ const footerContent = {
     companyLinks: [
       { label: "Insights", href: "/insights" },
       { label: "About RONCO", href: "/about" },
+      { label: "Careers", href: "/careers" },
       { label: "Contact", href: "/contact" },
     ],
 
