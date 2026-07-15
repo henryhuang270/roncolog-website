@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -37,7 +39,15 @@ const content = {
         value: "info@roncolog.com",
         href: "mailto:info@roncolog.com",
       },
+      {
+        label: "LinkedIn｜Henry Huang",
+        value: "linkedin.com/in/henry-huang-a9047425b",
+        href: "https://www.linkedin.com/in/henry-huang-a9047425b",
+      },
     ],
+
+    whatsappTitle: "WhatsApp 联系｜Henry Huang",
+    whatsappText: "请使用 WhatsApp 相机扫描二维码添加联系。",
 
     accessEyebrow: "联系入口",
     accessTitle: "请选择更适合你的沟通方式",
@@ -131,7 +141,15 @@ const content = {
         value: "info@roncolog.com",
         href: "mailto:info@roncolog.com",
       },
+      {
+        label: "LinkedIn | Henry Huang",
+        value: "linkedin.com/in/henry-huang-a9047425b",
+        href: "https://www.linkedin.com/in/henry-huang-a9047425b",
+      },
     ],
+
+    whatsappTitle: "WhatsApp Contact | Henry Huang",
+    whatsappText: "Scan the QR code with the WhatsApp camera to add this contact.",
 
     accessEyebrow: "Contact Access",
     accessTitle: "Select the communication path that fits your need",
@@ -194,6 +212,43 @@ const content = {
     ctaButton: "Email info@roncolog.com",
   },
 } as const;
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (locale === "zh") {
+    return {
+      title: "联系我们｜运输咨询、国际贸易与海外品牌合作｜荣程国际",
+      description:
+        "联系荣程国际，提交跨境运输咨询、海外品牌合作资料或一般商务需求。请提供货物、路线、产品或合作背景，便于我们进一步沟通。",
+      alternates: {
+        canonical: "https://www.roncolog.com/zh/contact",
+        languages: {
+          "zh-CN": "https://www.roncolog.com/zh/contact",
+          en: "https://www.roncolog.com/en/contact",
+        },
+      },
+    };
+  }
+
+  return {
+    title: "Contact RONCO | Freight Inquiry, Trade & Brand Partnership",
+    description:
+      "Contact RONCO for cross-border freight inquiries, international trade discussions, overseas brand partnership submissions and general business communication.",
+    alternates: {
+      canonical: "https://www.roncolog.com/en/contact",
+      languages: {
+        "zh-CN": "https://www.roncolog.com/zh/contact",
+        en: "https://www.roncolog.com/en/contact",
+      },
+    },
+  };
+}
 
 export default async function ContactPage({
   params,
@@ -267,6 +322,8 @@ export default async function ContactPage({
                 {"href" in item && item.href ? (
                   <a
                     href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={item.href.startsWith("http") ? "noreferrer" : undefined}
                     className="mt-3 inline-flex break-all text-base font-semibold leading-7 text-[#0b6f99] transition hover:text-[#176347]"
                   >
                     {item.value}
@@ -278,6 +335,24 @@ export default async function ContactPage({
                 )}
               </div>
             ))}
+
+            <div className="rounded-3xl border border-[#dcebf0] bg-[#f7fbfc] p-6 shadow-sm">
+              <p className="text-xs font-semibold tracking-[0.16em] text-[#39a773]">
+                {copy.whatsappTitle}
+              </p>
+              <div className="mt-4 flex flex-col gap-5 sm:flex-row sm:items-center">
+                <Image
+                  src="/images/contact/whatsapp-henry-qr.png"
+                  alt={copy.whatsappTitle}
+                  width={260}
+                  height={260}
+                  className="h-auto w-[190px] rounded-2xl border border-[#d6e8ee] bg-white p-2"
+                />
+                <p className="max-w-sm text-sm leading-7 text-slate-600">
+                  {copy.whatsappText}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

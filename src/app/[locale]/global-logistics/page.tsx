@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -284,6 +285,43 @@ const content = {
     ctaSecondary: "View Service Scope",
   },
 } as const;
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (locale === "zh") {
+    return {
+      title: "全球物流服务｜海运、空运、铁路、陆运及多式联运｜荣程国际",
+      description:
+        "荣程国际根据货物属性、起运地、目的地、时效和交付要求，协助协调国际海运、空运、铁路运输、陆运及多式联运方案。",
+      alternates: {
+        canonical: "https://www.roncolog.com/zh/global-logistics",
+        languages: {
+          "zh-CN": "https://www.roncolog.com/zh/global-logistics",
+          en: "https://www.roncolog.com/en/global-logistics",
+        },
+      },
+    };
+  }
+
+  return {
+    title: "Global Logistics | Sea, Air, Rail, Road & Multimodal Transport | RONCO",
+    description:
+      "RONCO coordinates sea freight, air freight, rail freight, road transport and multimodal options based on cargo, route, timing and delivery requirements.",
+    alternates: {
+      canonical: "https://www.roncolog.com/en/global-logistics",
+      languages: {
+        "zh-CN": "https://www.roncolog.com/zh/global-logistics",
+        en: "https://www.roncolog.com/en/global-logistics",
+      },
+    },
+  };
+}
 
 export default async function GlobalLogisticsPage({
   params,

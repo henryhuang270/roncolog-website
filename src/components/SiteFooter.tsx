@@ -68,6 +68,9 @@ const footerContent = {
     contactButton: "联系荣程国际",
     rights: "© 2026 荣程国际供应链科技（东莞）有限公司",
     location: "中国东莞松山湖",
+    linkedinLabel: "LinkedIn｜Henry Huang",
+    whatsappLabel: "WhatsApp 联系｜Henry Huang",
+    whatsappScan: "扫描二维码添加 WhatsApp",
     langSwitch: "EN",
   },
 
@@ -136,6 +139,9 @@ const footerContent = {
     rights:
       "© 2026 RONCO International Supply Chain Technology (Dongguan) Co., Ltd.",
     location: "Songshan Lake, Dongguan, China",
+    linkedinLabel: "LinkedIn | Henry Huang",
+    whatsappLabel: "WhatsApp Contact | Henry Huang",
+    whatsappScan: "Scan to contact on WhatsApp",
     langSwitch: "中文",
   },
 } as const;
@@ -246,6 +252,33 @@ export default function SiteFooter({ locale }: SiteFooterProps) {
               </a>
 
               <p>{copy.location}</p>
+
+              <a
+                href="https://www.linkedin.com/in/henry-huang-a9047425b"
+                target="_blank"
+                rel="noreferrer"
+                className="block transition hover:text-[#0b6f99]"
+              >
+                {copy.linkedinLabel}
+              </a>
+
+              <div className="pt-2">
+                <p className="font-semibold text-[#176347]">
+                  {copy.whatsappLabel}
+                </p>
+                <div className="mt-3 inline-flex flex-col items-center rounded-2xl border border-[#d6e8ee] bg-white p-3 shadow-sm">
+                  <Image
+                    src="/images/contact/whatsapp-henry-qr.png"
+                    alt={copy.whatsappLabel}
+                    width={160}
+                    height={160}
+                    className="h-auto w-[128px] rounded-xl sm:w-[140px]"
+                  />
+                  <p className="mt-2 max-w-[150px] text-center text-[11px] leading-5 text-[#6b8796]">
+                    {copy.whatsappScan}
+                  </p>
+                </div>
+              </div>
             </div>
 
             <Link

@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -181,6 +182,43 @@ const pageContent = {
     cooperationButton: "Discuss Cooperation",
   },
 } as const;
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (locale === "zh") {
+    return {
+      title: "荣程国际｜国际物流、国际贸易与海外品牌合作",
+      description:
+        "荣程国际总部位于东莞松山湖，以国际物流为基础，同时开展国际贸易与海外品牌引进及分销，协助客户处理跨境运输、商品进出口和品牌合作需求。",
+      alternates: {
+        canonical: "https://www.roncolog.com/zh",
+        languages: {
+          "zh-CN": "https://www.roncolog.com/zh",
+          en: "https://www.roncolog.com/en",
+        },
+      },
+    };
+  }
+
+  return {
+    title: "RONCO | Global Logistics, International Trade & Brand Partnerships",
+    description:
+      "RONCO is based in Songshan Lake, Dongguan, providing international logistics coordination, international trade support, and overseas brand introduction and distribution services.",
+    alternates: {
+      canonical: "https://www.roncolog.com/en",
+      languages: {
+        "zh-CN": "https://www.roncolog.com/zh",
+        en: "https://www.roncolog.com/en",
+      },
+    },
+  };
+}
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "zh" }];
