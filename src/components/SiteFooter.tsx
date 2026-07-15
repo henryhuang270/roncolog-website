@@ -180,6 +180,27 @@ export default function SiteFooter({ locale }: SiteFooterProps) {
             <p className="mt-5 max-w-md text-xs leading-6 text-[#6b8796]">
               {copy.companyName}
             </p>
+
+            <div className="mt-6 flex items-start gap-4">
+              <div className="inline-flex flex-col items-center rounded-2xl border border-[#d6e8ee] bg-white p-2.5 shadow-sm">
+                <Image
+                  src="/images/contact/whatsapp-henry-qr.png"
+                  alt={copy.whatsappLabel}
+                  width={140}
+                  height={140}
+                  className="h-auto w-[108px] rounded-lg"
+                />
+              </div>
+
+              <div className="pt-1">
+                <p className="text-sm font-semibold leading-6 text-[#176347]">
+                  {copy.whatsappLabel}
+                </p>
+                <p className="mt-1 max-w-[170px] text-xs leading-5 text-[#6b8796]">
+                  {copy.whatsappScan}
+                </p>
+              </div>
+            </div>
           </div>
 
           <div>
@@ -262,23 +283,6 @@ export default function SiteFooter({ locale }: SiteFooterProps) {
                 {copy.linkedinLabel}
               </a>
 
-              <div className="pt-2">
-                <p className="font-semibold text-[#176347]">
-                  {copy.whatsappLabel}
-                </p>
-                <div className="mt-3 inline-flex flex-col items-center rounded-2xl border border-[#d6e8ee] bg-white p-3 shadow-sm">
-                  <Image
-                    src="/images/contact/whatsapp-henry-qr.png"
-                    alt={copy.whatsappLabel}
-                    width={160}
-                    height={160}
-                    className="h-auto w-[128px] rounded-xl sm:w-[140px]"
-                  />
-                  <p className="mt-2 max-w-[150px] text-center text-[11px] leading-5 text-[#6b8796]">
-                    {copy.whatsappScan}
-                  </p>
-                </div>
-              </div>
             </div>
 
             <Link
