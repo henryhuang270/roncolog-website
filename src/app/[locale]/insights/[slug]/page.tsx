@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
 
 import {
   getArticleCategoryLabel,
@@ -100,6 +101,116 @@ function getRelatedArticles(
   );
 
   return [...sameCategory, ...otherArticles].slice(0, 3);
+}
+
+function renderInlineText(text: string): ReactNode[] {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={`${part}-${index}`} className="font-semibold text-[#17324f]">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+
+    return part;
+  });
+}
+
+function renderTextBlock(block: string, key: string) {
+  const lines = block
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  if (lines.length === 0) {
+    return null;
+  }
+
+  if (lines.length === 1 && lines[0].startsWith("### ")) {
+    return (
+      <h3
+        key={key}
+        className="pt-3 text-xl font-semibold leading-8 text-[#17324f] sm:text-2xl"
+      >
+        {renderInlineText(lines[0].slice(4))}
+      </h3>
+    );
+  }
+
+  if (lines.length === 1 && lines[0].startsWith("## ")) {
+    return (
+      <h2
+        key={key}
+        className="pt-5 text-2xl font-semibold leading-9 text-[#071629] sm:text-3xl"
+      >
+        {renderInlineText(lines[0].slice(3))}
+      </h2>
+    );
+  }
+
+  if (lines.length === 1 && lines[0].startsWith("# ")) {
+    return (
+      <h2
+        key={key}
+        className="pt-5 text-3xl font-semibold leading-tight text-[#071629] sm:text-4xl"
+      >
+        {renderInlineText(lines[0].slice(2))}
+      </h2>
+    );
+  }
+
+  if (lines.every((line) => /^[-*]\s+/.test(line))) {
+    return (
+      <ul key={key} className="list-disc space-y-2 pl-6 marker:text-[#a8721f]">
+        {lines.map((line, index) => (
+          <li key={`${key}-item-${index}`}>
+            {renderInlineText(line.replace(/^[-*]\s+/, ""))}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  if (lines.every((line) => /^\d+\.\s+/.test(line))) {
+    return (
+      <ol key={key} className="list-decimal space-y-2 pl-6 marker:font-semibold marker:text-[#a8721f]">
+        {lines.map((line, index) => (
+          <li key={`${key}-item-${index}`}>
+            {renderInlineText(line.replace(/^\d+\.\s+/, ""))}
+          </li>
+        ))}
+      </ol>
+    );
+  }
+
+  if (lines.every((line) => line.startsWith("> "))) {
+    return (
+      <blockquote
+        key={key}
+        className="border-l-4 border-[#d9ba78] bg-[#f8fafc] px-5 py-4 text-slate-600"
+      >
+        {lines.map((line, index) => (
+          <p key={`${key}-quote-${index}`}>
+            {renderInlineText(line.replace(/^>\s+/, ""))}
+          </p>
+        ))}
+      </blockquote>
+    );
+  }
+
+  return (
+    <p key={key}>
+      {lines.map((line, index) => (
+        <span key={`${key}-line-${index}`}>
+          {renderInlineText(line)}
+          {index < lines.length - 1 ? <br /> : null}
+        </span>
+      ))}
+    </p>
+  );
 }
 
 export async function generateMetadata({
@@ -282,7 +393,10 @@ export default async function InsightArticlePage({
                     );
                   }
 
-                  return <p key={`${article.id}-${index}`}>{block}</p>;
+                  return renderTextBlock(
+                    block,
+                    `${article.id}-content-${index}`,
+                  );
                 })}
               </div>
             </div>
