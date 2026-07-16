@@ -242,7 +242,8 @@ export default function HomeBannerCarousel({
       >
         {extendedSlides.map((slide, index) => {
           const realIndex = (index - 1 + slideCount) % slideCount;
-          const isCurrent = realIndex === activeIndex;
+          const isCurrent = index === trackIndex;
+          const HeadingTag = index === 1 ? "h1" : "h2";
 
           return (
             <article
@@ -294,14 +295,14 @@ export default function HomeBannerCarousel({
                     {slide.eyebrow}
                   </div>
 
-                  <h1 className="max-w-[760px] text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.12] tracking-[-0.04em] text-[#071629]">
+                  <HeadingTag className="max-w-[760px] text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.12] tracking-[-0.04em] text-[#071629]">
                     {slide.title.split("\n").map((line, lineIndex, array) => (
                       <span key={`${line}-${lineIndex}`}>
                         {line}
                         {lineIndex < array.length - 1 ? <br /> : null}
                       </span>
                     ))}
-                  </h1>
+                  </HeadingTag>
 
                   <p className="mt-6 max-w-[590px] text-[15px] leading-7 text-slate-700 sm:text-[17px] sm:leading-8">
                     {slide.description}
