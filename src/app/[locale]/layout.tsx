@@ -7,6 +7,39 @@ type Locale = "en" | "zh";
 
 const siteUrl = "https://www.roncolog.com";
 
+const organizationJsonLd = (locale: Locale) => ({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${siteUrl}/#organization`,
+  name: locale === "zh" ? "荣程国际" : "RONCO",
+  alternateName: locale === "zh" ? "RONCO" : "荣程国际",
+  legalName:
+    locale === "zh"
+      ? "荣程国际供应链科技（东莞）有限公司"
+      : "RONCO International Supply Chain Technology (Dongguan) Co., Ltd.",
+  url: siteUrl,
+  logo: `${siteUrl}/brand/ronco-logo-v4-light-bg.png`,
+  email: "mailto:info@roncolog.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress:
+      locale === "zh"
+        ? "松山湖高新技术产业开发区工业西路国际创意设计城2栋2单元503室"
+        : "Room 503, Unit 2, Building 2, International Creative Design City (ICDC), West Industrial Road, Songshan Lake Science and Technology Industrial Park",
+    addressLocality: locale === "zh" ? "东莞市" : "Dongguan",
+    addressRegion: locale === "zh" ? "广东省" : "Guangdong",
+    postalCode: "523808",
+    addressCountry: "CN",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "business inquiries",
+    email: "info@roncolog.com",
+    availableLanguage: ["zh-CN", "en"],
+  },
+});
+
+
 const localeMetadata: Record<Locale, Metadata> = {
   zh: {
     title: "荣程国际｜国际物流、国际贸易与海外品牌合作",
@@ -81,11 +114,20 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  const currentLocale = locale as Locale;
+  const jsonLd = organizationJsonLd(currentLocale);
+
   return (
     <>
-      <SiteHeader locale={locale as Locale} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <SiteHeader locale={currentLocale} />
       {children}
-      <SiteFooter locale={locale as Locale} />
+      <SiteFooter locale={currentLocale} />
     </>
   );
 }
