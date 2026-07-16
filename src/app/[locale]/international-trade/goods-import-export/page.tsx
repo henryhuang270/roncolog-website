@@ -13,6 +13,9 @@ const content = {
     title: "协助中国商品出海，也协助海外商品进入中国。",
     subtitle:
       "荣程国际围绕真实产品、资料准备、供应链协同和跨境运输需求，协助客户推进商品双向流通。",
+    heroImageAlt: "中国商品与海外商品进出口合作场景",
+    exportImageAlt: "中国商品出海相关物流与贸易场景",
+    importImageAlt: "海外商品进入中国市场的产品与合作场景",
     introEyebrow: "双向贸易",
     introTitle: "从产品资料、贸易路径到跨境交付，协助推进商品流通",
     introText:
@@ -79,6 +82,9 @@ const content = {
     title: "Supporting China-made products going overseas and selected overseas goods entering China.",
     subtitle:
       "RONCO supports two-way product flow through real product information, documentation, supply-chain coordination and cross-border logistics discussion.",
+    heroImageAlt: "Import and export cooperation for Chinese and overseas products",
+    exportImageAlt: "Logistics and trade scene for China-made products going overseas",
+    importImageAlt: "Products and cooperation for overseas goods entering China",
     introEyebrow: "Two-Way Trade",
     introTitle:
       "Supporting product flow from documentation and trade pathways to cross-border delivery",
@@ -210,7 +216,7 @@ export default async function GoodsImportExportPage({
           <div className="relative min-h-[300px] lg:min-h-[520px]">
             <img
               src="/images/banners/international-trade-import-export-banner.png"
-              alt={copy.title}
+              alt={copy.heroImageAlt}
               className="absolute inset-0 h-full w-full object-cover object-left"
             />
           </div>
@@ -257,6 +263,7 @@ export default async function GoodsImportExportPage({
             text={copy.exportText}
             items={copy.exportItems}
             image="/images/banners/global-logistics-hero.png"
+            imageAlt={copy.exportImageAlt}
           />
 
           <TradeDirectionCard
@@ -265,6 +272,7 @@ export default async function GoodsImportExportPage({
             text={copy.importText}
             items={copy.importItems}
             image="/images/banners/brand-partnership-hero.png"
+            imageAlt={copy.importImageAlt}
           />
         </div>
       </section>
@@ -372,16 +380,22 @@ function TradeDirectionCard({
   text,
   items,
   image,
+  imageAlt,
 }: {
   label: string;
   title: string;
   text: string;
   items: readonly string[];
   image: string;
+  imageAlt: string;
 }) {
   return (
     <article className="overflow-hidden rounded-[2rem] border border-[#dcebf0] bg-white shadow-sm">
-      <img src={image} alt="" className="aspect-[16/9] w-full object-cover" />
+      <img
+        src={image}
+        alt={imageAlt}
+        className="aspect-[16/9] w-full object-cover"
+      />
 
       <div className="p-7 sm:p-8">
         <p className="text-xs font-semibold tracking-[0.16em] text-[#39a773]">

@@ -62,7 +62,7 @@ export default function PageHero({
       <div className="absolute inset-0">
         <Image
           src={image}
-          alt={imageAlt ?? title}
+          alt={imageAlt ?? ""}
           fill
           priority
           quality={85}

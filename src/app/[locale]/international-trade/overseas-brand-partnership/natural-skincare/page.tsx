@@ -11,6 +11,7 @@ const content = {
     title: "关注天然成分、温和配方与健康肌肤状态。",
     subtitle:
       "荣程国际关注适合中国市场的海外天然护肤品牌，在品牌授权、产品资料和合规条件具备的前提下，推进产品引进、市场测试与合作沟通。",
+    heroImageAlt: "天然护肤产品与植物成分护肤合作方向",
     introEyebrow: "天然护肤产品",
     introTitle: "从产品定位、成分资料和市场适配性出发，判断合作可行性",
     introText:
@@ -76,6 +77,7 @@ const content = {
     title: "Focused on natural ingredients, gentle formulas and healthy-looking skin.",
     subtitle:
       "RONCO focuses on overseas natural skincare brands suitable for the China market. Subject to brand authorization, product documents and compliance conditions, we discuss product introduction, market testing and cooperation opportunities.",
+    heroImageAlt: "Natural skincare products and plant-based skincare cooperation",
     introEyebrow: "Natural Skincare",
     introTitle:
       "Review positioning, ingredient documents and market suitability before cooperation",
@@ -173,7 +175,7 @@ export default async function NaturalSkincarePage({
           <div className="overflow-hidden rounded-[2rem] border border-[#dcebf0] bg-[#f7fbfc] shadow-[0_18px_46px_rgba(31,93,122,0.12)]">
             <img
               src="/images/natural-skincare/natural-skincare-hero.png"
-              alt={copy.eyebrow}
+              alt={copy.heroImageAlt}
               className="aspect-[16/10] w-full object-cover"
             />
           </div>

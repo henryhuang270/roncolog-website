@@ -12,6 +12,7 @@ const content = {
     title: "商城正在建设中，敬请期待。",
     subtitle:
       "荣程全球精选将作为荣程国际未来面向优质海外商品展示、市场测试和复购承接的预留入口。目前商城尚未正式上线。",
+    heroImageAlt: "荣程全球精选多品类产品方向展示",
     statusLabel: "当前状态",
     statusTitle: "荣程全球精选暂未开放购买",
     statusText:
@@ -68,6 +69,7 @@ const content = {
     title: "The marketplace is under development. Stay tuned.",
     subtitle:
       "RONCO Global Select is a reserved entry for future product display, market testing and repeat-purchase support for selected overseas goods. The marketplace is not officially launched yet.",
+    heroImageAlt: "RONCO Global Select multi-category product showcase",
     statusLabel: "Current Status",
     statusTitle: "RONCO Global Select is not open for purchase yet",
     statusText:
@@ -141,7 +143,7 @@ export default async function RoncoGlobalSelectPage({
         <div className="mx-auto max-w-7xl overflow-hidden rounded-t-[2rem] border border-b-0 border-[#d7e8ee] bg-white shadow-[0_20px_50px_rgba(31,93,122,0.12)]">
           <img
             src="/images/banners/ronco-global-select-banner.png"
-            alt={copy.eyebrow}
+            alt={copy.heroImageAlt}
             className="h-[260px] w-full object-cover object-center sm:h-[320px] lg:h-[500px]"
           />
         </div>

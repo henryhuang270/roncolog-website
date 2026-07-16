@@ -11,6 +11,7 @@ const content = {
     title: "关注轻量户外、运动生活方式与实用户外装备。",
     subtitle:
       "荣程国际关注适合中国市场的海外运动与户外产品方向，在品牌授权、产品资料和合规条件具备的前提下，推进产品引进、市场测试与合作沟通。",
+    heroImageAlt: "运动、徒步与轻量户外产品合作方向",
     introEyebrow: "运动与户外产品",
     introTitle: "从产品实用性、场景适配和供应条件出发，判断合作可行性",
     introText:
@@ -81,6 +82,7 @@ const content = {
     title: "Focused on lightweight outdoor gear, sports lifestyle and practical equipment.",
     subtitle:
       "RONCO focuses on overseas sports and outdoor product directions suitable for the China market. Subject to brand authorization, product documents and compliance conditions, we discuss product introduction, market testing and cooperation opportunities.",
+    heroImageAlt: "Sports, hiking and lightweight outdoor product cooperation",
     introEyebrow: "Sports & Outdoor",
     introTitle:
       "Review product practicality, scenario fit and supply conditions before cooperation",
@@ -184,7 +186,7 @@ export default async function SportsOutdoorPage({
           <div className="overflow-hidden rounded-[2rem] border border-[#dcebf0] bg-[#f7fbfc] shadow-[0_18px_46px_rgba(31,93,122,0.12)]">
             <img
               src="/images/sports-outdoor/sports-outdoor-hero.png"
-              alt={copy.eyebrow}
+              alt={copy.heroImageAlt}
               className="aspect-[16/10] w-full object-cover"
             />
           </div>
@@ -236,6 +238,7 @@ export default async function SportsOutdoorPage({
             {scrollingProducts.map((item, index) => (
               <article
                 key={`${item.title}-${index}`}
+                aria-hidden={index >= copy.products.length}
                 className="group w-[310px] shrink-0 overflow-hidden rounded-[1.8rem] border border-[#d7e8ee] bg-white shadow-[0_14px_34px_rgba(31,93,122,0.10)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_46px_rgba(31,93,122,0.14)]"
               >
                 <div className="overflow-hidden bg-[#f7fbfc]">
