@@ -71,6 +71,7 @@ const footerContent = {
     linkedinLabel: "LinkedIn｜Henry Huang",
     whatsappLabel: "WhatsApp 联系｜Henry Huang",
     whatsappScan: "扫描二维码添加 WhatsApp",
+    privacyLabel: "隐私政策",
     langSwitch: "EN",
   },
 
@@ -142,6 +143,7 @@ const footerContent = {
     linkedinLabel: "LinkedIn | Henry Huang",
     whatsappLabel: "WhatsApp Contact | Henry Huang",
     whatsappScan: "Scan to contact on WhatsApp",
+    privacyLabel: "Privacy Policy",
     langSwitch: "中文",
   },
 } as const;
@@ -297,7 +299,14 @@ export default function SiteFooter({ locale }: SiteFooterProps) {
         <div className="mt-9 flex flex-col gap-4 border-t border-[#d6e8ee] pt-5 text-xs text-[#6b8796] sm:flex-row sm:items-center sm:justify-between">
           <p>{copy.rights}</p>
 
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center gap-4">
+            <Link
+              href={hrefWithLocale("/privacy")}
+              className="text-xs font-semibold text-[#0b5f83] transition hover:text-[#176347]"
+            >
+              {copy.privacyLabel}
+            </Link>
+
             <Link
               href={switchLocaleHref}
               className="rounded-full border border-[#bdd8e2] bg-white px-4 py-2 text-xs font-semibold tracking-[0.12em] text-[#0b5f83] transition hover:border-[#6bbf95] hover:text-[#176347]"
