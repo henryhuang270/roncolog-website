@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import BrandPartnershipForm from "@/components/BrandPartnershipForm";
@@ -66,6 +67,52 @@ const content = {
     ],
   },
 } as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (locale !== "en" && locale !== "zh") {
+    return {};
+  }
+
+  const isZh = locale === "zh";
+  const siteUrl = "https://www.roncolog.com";
+  const canonicalUrl = `${siteUrl}/${locale}/international-trade/overseas-brand-partnership/inquiry`;
+
+  return {
+    title: isZh
+      ? "提交海外品牌合作资料｜荣程国际"
+      : "Submit Overseas Brand Partnership Information | RONCO",
+    description: isZh
+      ? "海外品牌方、供应商或合作代表可向荣程国际提交品牌介绍、产品目录、重点SKU及合作预期，用于中国市场合作的初步审核与沟通。"
+      : "Overseas brands, suppliers and representatives can submit brand profiles, product catalogues, key SKUs and cooperation expectations to RONCO for initial China-market review.",
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        "zh-CN": `${siteUrl}/zh/international-trade/overseas-brand-partnership/inquiry`,
+        en: `${siteUrl}/en/international-trade/overseas-brand-partnership/inquiry`,
+        "x-default": `${siteUrl}/en/international-trade/overseas-brand-partnership/inquiry`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: isZh ? "zh_CN" : "en_US",
+      alternateLocale: isZh ? ["en_US"] : ["zh_CN"],
+      url: canonicalUrl,
+      siteName: isZh ? "荣程国际" : "RONCO",
+      title: isZh
+        ? "提交海外品牌合作资料｜荣程国际"
+        : "Submit Overseas Brand Partnership Information | RONCO",
+      description: isZh
+        ? "向荣程国际提交品牌与产品资料，开展中国市场合作的初步审核与沟通。"
+        : "Submit brand and product information to RONCO for an initial China-market cooperation review.",
+    },
+  };
+}
 
 export default async function BrandPartnershipInquiryPage({
   params,

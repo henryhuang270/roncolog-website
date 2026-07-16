@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -179,6 +180,52 @@ function ArticleCard({
       </div>
     </article>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (locale !== "en" && locale !== "zh") {
+    return {};
+  }
+
+  const isZh = locale === "zh";
+  const siteUrl = "https://www.roncolog.com";
+  const canonicalUrl = `${siteUrl}/${locale}/insights`;
+
+  return {
+    title: isZh
+      ? "新闻洞察｜国际物流、国际贸易与品牌合作｜荣程国际"
+      : "Insights on Logistics, Trade & Brand Partnerships | RONCO",
+    description: isZh
+      ? "荣程国际新闻洞察持续发布国际物流、国际贸易、海外品牌合作、商品进出口、供应链操作及公司动态等实用内容。"
+      : "RONCO Insights covers global logistics, international trade, overseas brand partnerships, product import-export, supply-chain operations and company updates.",
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        "zh-CN": `${siteUrl}/zh/insights`,
+        en: `${siteUrl}/en/insights`,
+        "x-default": `${siteUrl}/en/insights`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: isZh ? "zh_CN" : "en_US",
+      alternateLocale: isZh ? ["en_US"] : ["zh_CN"],
+      url: canonicalUrl,
+      siteName: isZh ? "荣程国际" : "RONCO",
+      title: isZh
+        ? "新闻洞察｜国际物流、国际贸易与品牌合作｜荣程国际"
+        : "Insights on Logistics, Trade & Brand Partnerships | RONCO",
+      description: isZh
+        ? "阅读荣程国际关于国际物流、国际贸易、海外品牌合作和供应链操作的实用内容。"
+        : "Read RONCO insights on global logistics, international trade, overseas brand partnerships and supply-chain operations.",
+    },
+  };
 }
 
 export default async function InsightsPage({

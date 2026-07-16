@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -249,6 +250,52 @@ const content = {
     tradeButton: "Back to International Trade",
   },
 } as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (locale !== "en" && locale !== "zh") {
+    return {};
+  }
+
+  const isZh = locale === "zh";
+  const siteUrl = "https://www.roncolog.com";
+  const canonicalUrl = `${siteUrl}/${locale}/international-trade/overseas-brand-partnership`;
+
+  return {
+    title: isZh
+      ? "海外品牌引进与中国市场分销合作｜荣程国际"
+      : "Overseas Brand Introduction & China Distribution | RONCO",
+    description: isZh
+      ? "荣程国际关注营养健康、天然护肤、运动户外及轻量生活方式产品，在品牌授权、产品资料和合规条件具备的前提下，推进产品引进、市场测试与中国市场分销合作。"
+      : "RONCO works with overseas brands on product introduction, market testing and distribution cooperation in China, subject to authorization, documentation and compliance readiness.",
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        "zh-CN": `${siteUrl}/zh/international-trade/overseas-brand-partnership`,
+        en: `${siteUrl}/en/international-trade/overseas-brand-partnership`,
+        "x-default": `${siteUrl}/en/international-trade/overseas-brand-partnership`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: isZh ? "zh_CN" : "en_US",
+      alternateLocale: isZh ? ["en_US"] : ["zh_CN"],
+      url: canonicalUrl,
+      siteName: isZh ? "荣程国际" : "RONCO",
+      title: isZh
+        ? "海外品牌引进与中国市场分销合作｜荣程国际"
+        : "Overseas Brand Introduction & China Distribution | RONCO",
+      description: isZh
+        ? "了解荣程国际的海外品牌引进、市场测试与中国市场分销合作方向。"
+        : "Explore RONCO's overseas brand introduction, market testing and China distribution cooperation.",
+    },
+  };
+}
 
 export default async function OverseasBrandPartnershipPage({
   params,

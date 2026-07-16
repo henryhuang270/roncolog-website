@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -155,6 +156,52 @@ const content = {
     ctaSecondary: "Submit Freight Inquiry",
   },
 } as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (locale !== "en" && locale !== "zh") {
+    return {};
+  }
+
+  const isZh = locale === "zh";
+  const siteUrl = "https://www.roncolog.com";
+  const canonicalUrl = `${siteUrl}/${locale}/about`;
+
+  return {
+    title: isZh
+      ? "关于荣程国际｜供应链、国际物流与国际贸易"
+      : "About RONCO | Supply Chain, Logistics & International Trade",
+    description: isZh
+      ? "荣程国际总部位于东莞松山湖，以国际物流为基础，同时开展国际贸易、商品进出口及海外品牌引进与分销合作。"
+      : "RONCO is based in Songshan Lake, Dongguan, and provides international logistics coordination, trade support, product import-export and overseas brand partnership services.",
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        "zh-CN": `${siteUrl}/zh/about`,
+        en: `${siteUrl}/en/about`,
+        "x-default": `${siteUrl}/en/about`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: isZh ? "zh_CN" : "en_US",
+      alternateLocale: isZh ? ["en_US"] : ["zh_CN"],
+      url: canonicalUrl,
+      siteName: isZh ? "荣程国际" : "RONCO",
+      title: isZh
+        ? "关于荣程国际｜供应链、国际物流与国际贸易"
+        : "About RONCO | Supply Chain, Logistics & International Trade",
+      description: isZh
+        ? "了解荣程国际的公司定位、全球物流、国际贸易及海外品牌合作业务方向。"
+        : "Learn about RONCO's company positioning, global logistics, international trade and overseas brand partnership activities.",
+    },
+  };
+}
 
 export default async function AboutPage({
   params,

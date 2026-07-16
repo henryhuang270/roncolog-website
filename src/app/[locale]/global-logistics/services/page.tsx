@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -245,6 +246,52 @@ const content = {
     backButton: "Back to Global Logistics",
   },
 } as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (locale !== "en" && locale !== "zh") {
+    return {};
+  }
+
+  const isZh = locale === "zh";
+  const siteUrl = "https://www.roncolog.com";
+  const canonicalUrl = `${siteUrl}/${locale}/global-logistics/services`;
+
+  return {
+    title: isZh
+      ? "全球物流业务范围与服务方向｜荣程国际"
+      : "Global Logistics Scope & Service Directions | RONCO",
+    description: isZh
+      ? "荣程国际根据货物、路线、时效和交付要求，协调国际海运、空运、铁路运输、陆运及多式联运，并重点关注东南亚、美国、欧洲和非洲等发运方向。"
+      : "RONCO coordinates sea, air, rail, road and multimodal transport based on cargo, routes, timing and delivery needs, with priority service directions across Southeast Asia, the United States, Europe and Africa.",
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        "zh-CN": `${siteUrl}/zh/global-logistics/services`,
+        en: `${siteUrl}/en/global-logistics/services`,
+        "x-default": `${siteUrl}/en/global-logistics/services`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: isZh ? "zh_CN" : "en_US",
+      alternateLocale: isZh ? ["en_US"] : ["zh_CN"],
+      url: canonicalUrl,
+      siteName: isZh ? "荣程国际" : "RONCO",
+      title: isZh
+        ? "全球物流业务范围与服务方向｜荣程国际"
+        : "Global Logistics Scope & Service Directions | RONCO",
+      description: isZh
+        ? "查看荣程国际的海运、空运、铁路、陆运、多式联运及重点服务方向。"
+        : "View RONCO's sea, air, rail, road and multimodal transport scope and priority service directions.",
+    },
+  };
+}
 
 export default async function GlobalLogisticsServicesPage({
   params,

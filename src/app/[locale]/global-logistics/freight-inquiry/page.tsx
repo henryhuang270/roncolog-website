@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -71,6 +72,52 @@ const content = {
       "Information submitted through this page is used for preliminary shipment assessment only. Final quotation, lead time, capacity, customs requirements and transport arrangements depend on actual cargo, route, carrier resources and review results.",
   },
 } as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (locale !== "en" && locale !== "zh") {
+    return {};
+  }
+
+  const isZh = locale === "zh";
+  const siteUrl = "https://www.roncolog.com";
+  const canonicalUrl = `${siteUrl}/${locale}/global-logistics/freight-inquiry`;
+
+  return {
+    title: isZh
+      ? "运输咨询｜提交跨境物流需求｜荣程国际"
+      : "Freight Inquiry | Submit Cross-Border Shipping Needs | RONCO",
+    description: isZh
+      ? "向荣程国际提交货物名称、起运地、目的地、重量、体积、件数和预计发货时间，以便评估海运、空运、铁路、陆运或多式联运方向。"
+      : "Submit cargo, origin, destination, weight, volume, package count and shipping time to RONCO for preliminary assessment of sea, air, rail, road or multimodal transport options.",
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        "zh-CN": `${siteUrl}/zh/global-logistics/freight-inquiry`,
+        en: `${siteUrl}/en/global-logistics/freight-inquiry`,
+        "x-default": `${siteUrl}/en/global-logistics/freight-inquiry`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: isZh ? "zh_CN" : "en_US",
+      alternateLocale: isZh ? ["en_US"] : ["zh_CN"],
+      url: canonicalUrl,
+      siteName: isZh ? "荣程国际" : "RONCO",
+      title: isZh
+        ? "运输咨询｜提交跨境物流需求｜荣程国际"
+        : "Freight Inquiry | Submit Cross-Border Shipping Needs | RONCO",
+      description: isZh
+        ? "提交跨境运输需求，由荣程国际根据实际货物与路线信息评估运输方向。"
+        : "Submit a freight inquiry to RONCO for preliminary assessment based on your cargo and route details.",
+    },
+  };
+}
 
 export default async function FreightInquiryPage({
   params,

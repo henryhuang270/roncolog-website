@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -141,6 +142,52 @@ const content = {
     tradeButton: "Back to International Trade",
   },
 } as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (locale !== "en" && locale !== "zh") {
+    return {};
+  }
+
+  const isZh = locale === "zh";
+  const siteUrl = "https://www.roncolog.com";
+  const canonicalUrl = `${siteUrl}/${locale}/international-trade/goods-import-export`;
+
+  return {
+    title: isZh
+      ? "商品进出口｜中国商品出海与海外商品进入中国｜荣程国际"
+      : "Product Import & Export | China and Global Markets | RONCO",
+    description: isZh
+      ? "荣程国际围绕真实产品、资料准备、供应链协同和跨境运输需求，协助中国商品进入海外市场，也推进海外优质商品进入中国市场。"
+      : "RONCO supports China-made products going overseas and selected overseas goods entering China through product documentation, supply-chain coordination and cross-border logistics.",
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        "zh-CN": `${siteUrl}/zh/international-trade/goods-import-export`,
+        en: `${siteUrl}/en/international-trade/goods-import-export`,
+        "x-default": `${siteUrl}/en/international-trade/goods-import-export`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: isZh ? "zh_CN" : "en_US",
+      alternateLocale: isZh ? ["en_US"] : ["zh_CN"],
+      url: canonicalUrl,
+      siteName: isZh ? "荣程国际" : "RONCO",
+      title: isZh
+        ? "商品进出口｜中国商品出海与海外商品进入中国｜荣程国际"
+        : "Product Import & Export | China and Global Markets | RONCO",
+      description: isZh
+        ? "了解荣程国际在中国商品出海与海外商品进入中国方面的商品进出口合作方向。"
+        : "Explore RONCO's product import-export support for China-made products and selected overseas goods.",
+    },
+  };
+}
 
 export default async function GoodsImportExportPage({
   params,

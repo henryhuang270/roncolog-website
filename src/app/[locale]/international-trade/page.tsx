@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -252,6 +253,52 @@ const content = {
     goodsButton: "Product Import & Export",
   },
 } as const;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (locale !== "en" && locale !== "zh") {
+    return {};
+  }
+
+  const isZh = locale === "zh";
+  const siteUrl = "https://www.roncolog.com";
+  const canonicalUrl = `${siteUrl}/${locale}/international-trade`;
+
+  return {
+    title: isZh
+      ? "国际贸易与商品进出口服务｜荣程国际"
+      : "International Trade & Product Import-Export Services | RONCO",
+    description: isZh
+      ? "荣程国际围绕商品进出口、海外品牌引进与分销开展国际贸易合作，协助中国商品出海，并推进适合中国市场的海外优质商品引进、市场测试与分销沟通。"
+      : "RONCO supports international trade through product import and export, overseas brand introduction and distribution, helping China-made products reach overseas markets and selected overseas goods enter China.",
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        "zh-CN": `${siteUrl}/zh/international-trade`,
+        en: `${siteUrl}/en/international-trade`,
+        "x-default": `${siteUrl}/en/international-trade`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: isZh ? "zh_CN" : "en_US",
+      alternateLocale: isZh ? ["en_US"] : ["zh_CN"],
+      url: canonicalUrl,
+      siteName: isZh ? "荣程国际" : "RONCO",
+      title: isZh
+        ? "国际贸易与商品进出口服务｜荣程国际"
+        : "International Trade & Product Import-Export Services | RONCO",
+      description: isZh
+        ? "了解荣程国际的商品进出口、海外品牌引进与分销及国际贸易合作方向。"
+        : "Explore RONCO's international trade, product import-export and overseas brand introduction and distribution services.",
+    },
+  };
+}
 
 export default async function InternationalTradePage({
   params,
