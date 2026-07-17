@@ -40,6 +40,19 @@ const organizationJsonLd = (locale: Locale) => ({
 });
 
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  url: siteUrl,
+  name: "RONCO",
+  alternateName: ["RONCO International", "荣程国际"],
+  inLanguage: ["en", "zh-CN"],
+  publisher: {
+    "@id": `${siteUrl}/#organization`,
+  },
+};
+
 const localeMetadata: Record<Locale, Metadata> = {
   zh: {
     title: "荣程国际｜国际物流、国际贸易与海外品牌合作",
@@ -115,14 +128,20 @@ export default async function LocaleLayout({
   }
 
   const currentLocale = locale as Locale;
-  const jsonLd = organizationJsonLd(currentLocale);
+  const organizationData = organizationJsonLd(currentLocale);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(organizationData).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c"),
         }}
       />
       <SiteHeader locale={currentLocale} />

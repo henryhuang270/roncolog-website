@@ -20,12 +20,16 @@ const content = {
     overviewEyebrow: "公司定位",
     overviewTitle: "荣程国际是一家以国际物流为基础的供应链服务企业",
     overviewText:
-      "荣程国际供应链科技（东莞）有限公司立足东莞松山湖，业务以国际物流为基础，同时开展国际贸易、海外品牌引进与分销合作。我们关注真实货物、真实路线、真实产品资料和可执行的合作条件，而不是脱离业务实际的空泛承诺。",
+      "荣程国际的英文品牌名称为 RONCO。荣程国际供应链科技（东莞）有限公司立足东莞松山湖，业务以国际物流为基础，同时开展国际贸易、海外品牌引进与分销合作。我们关注真实货物、真实路线、真实产品资料和可执行的合作条件，而不是脱离业务实际的空泛承诺。",
 
     facts: [
       {
         label: "总部位置",
         value: "东莞松山湖",
+      },
+      {
+        label: "英文品牌名称",
+        value: "RONCO",
       },
       {
         label: "中文法定公司名称",
@@ -94,12 +98,16 @@ const content = {
     overviewTitle:
       "RONCO is a supply-chain service company built on international logistics",
     overviewText:
-      "RONCO International Supply Chain Technology (Dongguan) Co., Ltd. is based in Dongguan Songshan Lake. Our business is built on international logistics, while also developing international trade, overseas brand introduction and distribution cooperation. We focus on real cargo, real routes, real product documents and executable cooperation conditions rather than broad promises detached from operation.",
+      "RONCO is the operating brand of RONCO International Supply Chain Technology (Dongguan) Co., Ltd., based in Dongguan Songshan Lake. Our business is built on international logistics, while also developing international trade, overseas brand introduction and distribution cooperation. We focus on real cargo, real routes, real product documents and executable cooperation conditions rather than broad promises detached from operation.",
 
     facts: [
       {
         label: "Headquarters",
         value: "Dongguan Songshan Lake",
+      },
+      {
+        label: "Brand Name",
+        value: "RONCO",
       },
       {
         label: "Chinese Legal Name",

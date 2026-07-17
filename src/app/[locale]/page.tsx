@@ -19,7 +19,7 @@ const pageContent = {
     introEyebrow: "荣程国际是什么公司",
     introTitle: "连接中国企业、全球市场与海外品牌",
     introDescription:
-      "荣程国际总部位于东莞松山湖，是一家以国际物流为基础，同时开展国际贸易与海外品牌引进及分销的供应链服务企业。我们协助中国企业处理跨境运输需求，根据货物、路线、时效及交付要求，协调海运、空运、铁路运输、陆运及多式联运；同时持续寻找海外优质品牌商品，推进产品引进、市场测试和中国市场分销。",
+      "荣程国际的英文品牌名称为 RONCO，总部位于东莞松山湖。我们是一家以国际物流为基础，同时开展国际贸易与海外品牌引进及分销的供应链服务企业。我们协助中国企业处理跨境运输需求，根据货物、路线、时效及交付要求，协调海运、空运、铁路运输、陆运及多式联运；同时持续寻找海外优质品牌商品，推进产品引进、市场测试和中国市场分销。",
     introImageAlt: "国际物流与商品贸易协同",
     introCards: [
       {
@@ -101,7 +101,7 @@ const pageContent = {
     introEyebrow: "About RONCO",
     introTitle: "Connecting Chinese companies, global markets and overseas brands",
     introDescription:
-      "RONCO is headquartered in Songshan Lake, Dongguan. We are a supply-chain service company built on international logistics, while also developing international trade, overseas brand introduction and distribution. We help Chinese companies handle cross-border transportation needs by coordinating sea, air, rail, road and multimodal transportation based on cargo, routes, timing and delivery requirements. We also continue to identify quality overseas products and explore brand introduction, market testing and distribution opportunities in China.",
+      "RONCO is the operating brand of RONCO International Supply Chain Technology (Dongguan) Co., Ltd., headquartered in Songshan Lake, Dongguan. We are a supply-chain service company built on international logistics, while also developing international trade, overseas brand introduction and distribution. We help Chinese companies handle cross-border transportation needs by coordinating sea, air, rail, road and multimodal transportation based on cargo, routes, timing and delivery requirements. We also continue to identify quality overseas products and explore brand introduction, market testing and distribution opportunities in China.",
     introImageAlt: "International logistics and trade coordination",
     introCards: [
       {
@@ -195,7 +195,7 @@ export async function generateMetadata({
     return {
       title: "荣程国际｜国际物流、国际贸易与海外品牌合作",
       description:
-        "荣程国际总部位于东莞松山湖，以国际物流为基础，同时开展国际贸易与海外品牌引进及分销，协助客户处理跨境运输、商品进出口和品牌合作需求。",
+        "荣程国际英文品牌名称为 RONCO，总部位于东莞松山湖，以国际物流为基础，同时开展国际贸易、商品进出口及海外品牌引进与分销。",
       alternates: {
         canonical: "https://www.roncolog.com/zh",
         languages: {
@@ -209,7 +209,7 @@ export async function generateMetadata({
   return {
     title: "RONCO | Global Logistics, International Trade & Brand Partnerships",
     description:
-      "RONCO is based in Songshan Lake, Dongguan, providing international logistics coordination, international trade support, and overseas brand introduction and distribution services.",
+      "RONCO is the operating brand of RONCO International Supply Chain Technology (Dongguan) Co., Ltd., providing logistics, trade and overseas brand partnership services.",
     alternates: {
       canonical: "https://www.roncolog.com/en",
       languages: {
